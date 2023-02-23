@@ -5,4 +5,4 @@
 3. CHEN 461: Process Dynamics and Control
 4. CHEN 425: Process Economics, Integration, and Control
 
-Dr. Green, Dr. Kravaris, Dr. Wilhite, Dr. Halwagi
+Professors: Dr. Green, Dr. Kravaris, Dr. Wilhite, Dr. Halwagi
