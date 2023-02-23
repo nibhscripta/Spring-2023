@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{minted}
+\definecolor{LightGray}{gray}{0.9}
+
+\graphicspath{ {./} }
+\geometry{margin=0.75in}
+
+\title{CHEN 461 HW 1}
+\author{Mark Levchenko}
+\date{January 2023}
+
+\begin{document}
+
+
+
+\begin{enumerate}
+% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Problem A.3
+    \begin{enumerate}
+        \item 
+        \begin{align*}
+            F(s) &= \frac{4}{s^2 (s^2 + 4s + 4)} \\
+            F(s) &= \frac{4}{s^2 (s + 2)^2} \\
+            \frac{4}{s^2 (s + 2)^2} &= \frac{A_1}{s} + \frac{A_2}{s^2} + \frac{B_1}{s+2} + \frac{B_2}{(s+2)^2} \\
+            4 &= A_1 (s^3 + 4s^2 + 4s) + A_2 (s^2 + 4s + 4) + B_1 (s^3 + 2s^2) + B_2 s^2 \\
+            4 &= s^3 (A_1 + B_1) + s^2 (4A_1 + A_2 + 2B_1 + B_2) + s (4A_1 + 4A_2) + 4(A_2) \\
+            A_2 &= 1 \\
+            A_1 &= -1 \\
+            B_1 &= 1 \\
+            B_2 &= 1 \\
+            F(s) &= \frac{-1}{s} + \frac{1}{s^2} + \frac{1}{s+2} + \frac{1}{(s+2)^2} \\
+            \mathcal{L}^{-1}\{F(s)\} &= \mathcal{L}^{-1} \left\{ \frac{-1}{s} + \frac{1}{s^2} + \frac{1}{s+2} + \frac{1}{(s+2)^2} \right\} \\
+            \Aboxed{f(t) &= -1 + t + e^{-2t} + te^{-2t}}
+        \end{align*}
+    \end{enumerate}
+
+% Problem 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item A.9
+    \begin{align*}
+        \frac{d^3y}{dt^3} + 3 \frac{d^2y}{dt^2} + 4 \frac{dy}{dt} + 2y &= 2 \\
+        y(0) = \frac{dy}{dt}(0) = \frac{d^2y}{dt^2}(0) &= 0 \\ 
+        \mathcal{L}\left\{\frac{d^3y}{dt^3} + 3 \frac{d^2y}{dt^2} + 4 \frac{dy}{dt} + 2y \right\} &= \mathcal{L}\{2\} \\
+        s^3 Y(s) + 3s^2 Y(s) + 4s Y(s) + 2Y(s) &= \frac{2}{s} \\
+        Y(s) \left( s^3 + 3s^2 + 4s + 2 \right) &= \frac{2}{s} \\
+        \frac{2}{s (s + 1) (s^2 + 2s + 2)} &= Y(s) \\
+        \frac{A}{s} + \frac{B}{s+1} + \frac{Cs + D}{s^2 + 2s + 2} &= \frac{2}{s (s + 1) (s^2 + 2s + 2)} \\
+        A (s^3 + 3s^2 + 4s + 2) + B (s^3 + 2s^2 + 2s) + (Cs^3 + Cs^2 + Ds^2 + Ds) &= 2 \\
+        s^3 (A + B + C) + s^2 (3A + 2B + C + D) + s (4A + 2B + D) + 2 (A) &= 2 \\
+        A &= 1 \\
+        C &= 1 \\
+        B &= -2 \\
+        D &= 0 \\
+        \frac{1}{s} - \frac{2}{s+1} + \frac{s}{s^2 + 2s + 2} &= Y(s) \\
+        \frac{1}{s} - \frac{2}{s+1} + \frac{s}{(s + 1)^2 + 1} &= Y(s) \\
+        \mathcal{L}^{-1}\left\{\frac{1}{s} - \frac{2}{s+1} + \frac{s + 1}{(s + 1)^2 + 1} - \frac{1}{(s + 1)^2 + 1}\right\} &= \mathcal{L}^{-1}\{Y(s)\} \\
+        \Aboxed{1 - 2 e^{-t} + e^{-t} \cos{t} - e^{-t} \sin{t} &= y(t)}
+    \end{align*}
+
+
+% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item A.12
+    \begin{align*}
+        \frac{x_1}{dt} &= -2x_1 + 2x_2 + f(t) \\
+        \frac{x_2}{dt} &=  x_1 - 3x_2 \\
+        x_1(0) &= x_2(0) = 0 \\
+        \mathcal{L}\left\{\frac{x_1}{dt}\right\} &= \mathcal{L}\left\{\ -2x_1 + 2x_2 + f(t)\right\} \\
+        \mathcal{L}\left\{\frac{x_2}{dt}\right\} &=  \mathcal{L}\left\{\ x_1 - 3x_2\right\} \\
+        s X_1(s) &= -2X_1(s) + 2X_2(s) + F(s) \\
+        s X_2(s) &= X_1(s) - 3X_2(s) \\
+        \intertext{Rearrange:}
+        X_1(s) (s + 2) &= 2X_2(s) + F(s) \\
+        X_1(s) &= X_2(2) (s + 3) \\
+        \intertext{Substitute:}
+        X_1(s) &= \frac{F(s) (s + 3)}{(s + 1)(s + 4)} \\
+        X_2(s) &= \frac{F(s) }{(s + 1)(s + 4)} \\
+        X_1(s) &= \frac{F(s)}{3} \left( \frac{2}{s+1} + \frac{1}{s+4} \right) \\
+        \mathcal{L}^{-1}\{X_1(s)\} &= \mathcal{L}^{-1}\left\{ \frac{F(s)}{3} \left( \frac{2}{s+1} + \frac{1}{s+4} \right) \right\} \\
+        x_1(t) &= \frac{f(t)}{3} * \left( 2 e^{-t} + e^{-4t} \right) \\
+        X_2(s) &= \frac{F(s)}{3} \left( \frac{1}{s+1} - \frac{1}{s+4} \right) \\
+        \mathcal{L}^{-1}\{X_2(s)\} &= \mathcal{L}^{-1}\left\{ \frac{F(s)}{3} \left( \frac{1}{s+1} - \frac{1}{s+4} \right) \right\} \\
+        x_2(t) &= \frac{f(t)}{3} * \left( e^{-t} - e^{-4t} \right)
+    \end{align*}
+    \begin{empheq}[box=\fbox]{align*}
+        x_1(t) &= \frac{f(t)}{3} * \left( 2e^{-t} + e^{-4t} \right) \\
+        x_2(t) &= \frac{f(t)}{3} * \left( e^{-t} - e^{-4t} \right)
+    \end{empheq}
+
+
+% Problem 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item A.14
+    \begin{align*}
+        f(t) &=  \frac{t}{\epsilon^2}\mathcal{H}\left(t\right) - \frac{t}{\epsilon^2}\mathcal{H}\left(t-\epsilon\right) + \left( \frac{2}{\epsilon} - \frac{t}{\epsilon^2} \right) \mathcal{H}\left(t-\epsilon\right) - \left( \frac{2}{\epsilon} - \frac{t}{\epsilon^2} \right) \mathcal{H}\left(t-2\epsilon\right) \\
+        f(t) &= \frac{t}{\epsilon^2} \mathcal{H}(t) + \left( \frac{2}{\epsilon} - \frac{2t}{\epsilon^2} \right) \mathcal{H}(t-\epsilon) - \left( \frac{2}{\epsilon} - \frac{t}{\epsilon^2} \right) \mathcal{H}(t-2\epsilon) \\
+        f(t) &= \frac{t}{\epsilon^2} \mathcal{H}(t) - \frac{2}{\epsilon^2} (t-\epsilon) \mathcal{H}(t-\epsilon) + \frac{1}{\epsilon^2} (t-2\epsilon) \mathcal{H}(t-2\epsilon) \\
+        \mathcal{L}\{f(t)\} &= \mathcal{L}\left\{\ \frac{t}{\epsilon^2} \mathcal{H}(t) - \frac{2}{\epsilon^2} (t-\epsilon) \mathcal{H}(t-\epsilon) + \frac{1}{\epsilon^2} (t-2\epsilon) \mathcal{H}(t-2\epsilon) \right\} \\
+        F(s) &= \frac{1}{\epsilon^2 s^2} - \frac{2}{\epsilon^2 s^2} e^{-\epsilon s} + \frac{1}{\epsilon^2 s^2} e^{-2 \epsilon s} \\
+        \Aboxed{F(s) &= \frac{1 - 2 e^{-\epsilon s} + e^{-2 \epsilon s}}{\epsilon^2 s^2}}
+    \end{align*}
+
+
+    As $\epsilon$ approaches 0, $F(s)$ becomes the line $F(s)=1$. The peak of the triangle in $f(t)$ moves closer to the y-axis, and it eventually becomes a straight line that runs along the y-axis with infinite height. 
+
+
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,201 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{siunitx}
+\definecolor{LightGray}{gray}{0.9}
+
+\graphicspath{ {./} }
+\geometry{margin=0.75in}
+
+\title{CHEN 425 HW1}
+\author{Mark Levchenko}
+\date{January 2023}
+
+\begin{document}
+
+\begin{enumerate}
+% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Problem 2.1 
+
+    FCI using six-tenths method:
+    \begin{align*}
+        \mathrm{FCI}_{110} &= \$12 \text{ billion} \left( \frac{110,000}{140,000} \right)^{0.6} \\
+        \Aboxed{\mathrm{FCI}_{110} &= \$10.38 \text{ billion}}
+    \end{align*}
+
+% Problem 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.2
+    \begin{align*}
+        \text{EtOH production} &= 1800 \frac{\mathrm{ton}}{\mathrm{day}} \cdot \frac{90 \mathrm{gal}}{\mathrm{ton}} \cdot \frac{365 \mathrm{day}}{\mathrm{yr}} \\
+        \text{EtOH production} &= 59.13 \frac{\mathrm{MMgal}}{\mathrm{yr}}
+    \end{align*}
+    \begin{enumerate}
+        \item 
+        \begin{align*}
+            \mathrm{FCI}_{2014} &= 59.13 \frac{\mathrm{MMgal}}{\mathrm{yr}} \cdot \frac{\$ 3.10}{\mathrm{gal}} \\
+            \Aboxed{\mathrm{FCI}_{2014} &= \$ 183.3 \text{ MM}}
+        \end{align*}
+        \item
+        \begin{align*}
+            \mathrm{CEPCI}_{2014} &= 576.1 \\
+            \mathrm{CEPCI}_{\mathrm{current}} &= 833.1 \\
+            \mathrm{FCI} &= \$ 183.3 \text{ MM} \cdot \frac{833.1}{576.1} \\
+            \Aboxed{\mathrm{FCI}_{\mathrm{current}} &= \$ 265.1 \text{ MM}}
+        \end{align*}
+    \end{enumerate}
+
+% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.3
+    \begin{align*}
+        \text{current price of ethanol} &= \$ 2.16 \\
+        \mathrm{FCI}_{\mathrm{current}} &= 59.13 \frac{\mathrm{MMgal}}{\mathrm{yr}} \cdot \frac{\$ 2.16}{\mathrm{gal}} \\
+        \Aboxed{\mathrm{FCI}_{\mathrm{current}} &= \$ 127.7 \text{ MM}}
+    \end{align*}
+
+% Problem 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.4
+
+    Solid-fluid process
+    \begin{align*}
+        \text{delivered cost} &= \$ 40 \text{ MM} \cdot \frac{100}{139} \\
+        \text{delivered cost} &= \$ 28.8 \text{ MM} \\
+        \text{Lang factor} &= 4.3 \\
+        \mathrm{FCI} &= \$ 28.8 \text{ MM} \cdot 4.3 \\
+        \Aboxed{\mathrm{FCI} &= \$ 123.7 \text{ MM}}
+    \end{align*}
+
+% Problem 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.5
+
+    Lang method:
+    \begin{align*}
+        \text{delivered cost} &= \$ 5 \text{ MM} + \$ 4 \text{ MM} + \$ 2 \text{ MM} + \$ 1 \text{ MM} \\
+         \text{delivered cost} &= \$ 12 \text{ MM} \\
+        \text{Lang factor} &= 5 \\
+        \mathrm{FCI} &= 5 \cdot \$ 12 \text{ MM} \\
+        \Aboxed{\mathrm{FCI} &= \$ 60 \text{ MM}}
+    \end{align*}
+    Hand method:
+    \begin{align*}
+        \text{distillation column factor} &= 4 \\ 
+        \text{fired heater factor} &= 2 \\ 
+        \text{heat exchanger factor} &= 3.5 \\ 
+        \text{tanks factor} &= 4 \\
+        \text{instruments factor} &= 4 \\ 
+        \mathrm{FCI} &= 4 \cdot \$ 5 \text{ MM} + 2 \cdot \$ 4 \text{ MM} + 3.5 \cdot \$ 2 \text{ MM} + 4 \cdot \$ 1 \text{ MM} + 4 \cdot \$ 4 \text{ MM} \\
+        \Aboxed{\mathrm{FCI} &= \$ 55 \text{ MM}}
+    \end{align*}
+
+% Problem 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.6
+
+    $<$ 60,000 MTPA
+    \begin{align*}
+        \mathrm{FCI} &= 458000 \cdot 8 \cdot 40000^{0.3} \\
+        \Aboxed{\mathrm{FCI} &= \$ 88 \text{ MM}}
+    \end{align*}
+
+% Problem 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.7
+    \begin{enumerate}
+        \item Lang method
+        \begin{align*}
+            \mathrm{FCI} &= 5 \cdot \$ 200 \text{ MM} \\
+            \Aboxed{\mathrm{FCI} &= \$ 1000 \text{ MM}}
+        \end{align*}
+
+        \item Six-tenths method
+        \begin{align*}
+            \mathrm{FCI} &= \$ 1300 \text{ MM} \left( \frac{1 \cdot 10^6}{1.5 \cdot 10^6} \right)^{0.6} \\
+            \Aboxed{\mathrm{FCI} &= \$ 1019 \text{ MM}}
+        \end{align*}
+
+        \item Empirical method 
+        \begin{align*}
+            \mathrm{FCI} &= 17000 \cdot 6 \cdot (1 \cdot 10^6)^{0.65} \\
+            \Aboxed{\mathrm{FCI} &= \$ 810.4 \text{ MM}}
+        \end{align*}
+
+        \item Turnover method
+        \begin{align*}
+            \text{Gulf Coast MeOH contract price} &\approx \$ 600 / \mathrm{tonne} \\
+            \mathrm{FCI} &= \$ 600 / \mathrm{tonne} \cdot 1 \cdot 10^6 \text{ MTPA} \\
+            \Aboxed{\mathrm{FCI} &= \$ 600 \text{ MM}}
+        \end{align*}
+    \end{enumerate}
+
+
+% Problem 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.8
+    \begin{align*}
+        \text{Heat} &= \frac{41.2 \frac{\mathrm{MMBTU}}{\mathrm{h}}}{0.65} = 63.38 \frac{\mathrm{MMBTU}}{\mathrm{h}} \\
+        \intertext{Average Henry Hub spot price from January 19, 2023 to January 25, 2023}
+        \mathrm{price} &= \$ 3.174 / \mathrm{MMBTU} \\
+        \text{operating cost} &= 63.38 \frac{\mathrm{MMBTU}}{\mathrm{h}} \cdot \$ 3.174 / \mathrm{MMBTU} \cdot 8760 \frac{\mathrm{h}}{\mathrm{yr}} \\
+        \Aboxed{\text{operating cost} &= \$ 1.762 \text{ MM}}
+    \end{align*}
+
+% Problem 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.9
+    \begin{align*}
+        \intertext{WTI crude future price on January 28, 2023}
+        \mathrm{price} &= \$ 79.68 / \mathrm{bbl} \\
+        \text{operating cost} &= 63.38 \frac{\mathrm{MMBTU}}{\mathrm{h}} \cdot \frac{1 \mathrm{bbl}}{5.8\mathrm{MMBTU}} \cdot \$ 79.68 / \mathrm{bbl} \cdot 8760 \frac{\mathrm{h}}{\mathrm{yr}} \\
+        \Aboxed{\text{operating cost} &= \$ 7.627 \text{ MM}}
+    \end{align*}
+    It is significantly more expensive to use crude oil for heating than natural gas.
+
+% Problem 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.10
+    \begin{align*}
+        \text{operating cost} &= 63400 \frac{\mathrm{SCF}}{\mathrm{h}} \cdot \frac{1000 \mathrm{BTU}}{\mathrm{CSF}} \cdot \frac{1 \mathrm{MMBTU}}{10^6 \mathrm{BTU}} \cdot \$ 3.174 / \mathrm{MMBTU} \\
+        \Aboxed{\text{operating cost} &= \$ 1.763 \text{ MM}}
+    \end{align*}
+
+% Problem 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.11
+    \begin{align*}
+        \intertext{six-tenths scaling}
+        \mathrm{FOB}_{50} &= \$100000 \cdot \left( \frac{50\mathrm{m}^2}{100\mathrm{m}^2} \right) \\
+        \Aboxed{\mathrm{FOB}_{50} &= \$ 65,975} 
+    \end{align*}
+
+% Problem 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2.12
+    \begin{align*}
+        \intertext{From cost chart:}
+        \text{carbon steel cost} &= \$ 35000 \\
+        \text{cast steel factor} &= 1.2 \\
+        \text{cast steel cost} &= 1.2 \cdot \$ 35000 \\
+        \Aboxed{\text{cast steel cost} &= \$ 42,000} \\
+        \text{316L stainless steel factor} &= 2.1 \\
+        \text{316L stainless steel cost} &= 2.1 \cdot \$ 35000 \\
+        \Aboxed{\text{316L stainless steel cost} &= \$ 73,500} \\
+    \end{align*}
+
+
+
+
+
+\end{enumerate}
+
+\end{document}

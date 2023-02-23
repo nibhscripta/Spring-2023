@@ -1,0 +1,359 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{svg}
+\definecolor{LightGray}{gray}{0.9}
+
+\graphicspath{ {./} }
+\geometry{margin=0.75in}
+
+\title{CHEN 364 HW 3}
+\author{Mark Levchenko}
+\date{February 2023}
+
+\begin{document}
+
+\begin{enumerate}
+% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 1
+    \begin{enumerate}
+        \item 
+        \begin{align*}
+            k &= A e^{\frac{-E_a}{RT}} \\
+            \intertext{Becomes linear equation:}
+            \ln{k} &= \ln{A} - \frac{E_a}{RT} \\
+            -r_A &= k C_A^2 C_B \\
+            k &= \frac{-r_A}{C_A^2 C_B} \\
+            \text{Fit } \ln{k} \text{ v } \frac{1}{T}
+        \end{align*}
+        
+        Code for fitting parameters to data:
+
+\begin{minted}[
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+]{python}
+import numpy as np
+from scipy.optimize import curve_fit, fsolve
+from sklearn.metrics import r2_score
+# data
+r_A = np.array([0.002, 0.046, 0.73, 8.33])
+T_K = np.array([300, 320, 340, 360])
+# reaction concentration
+C_A = 2
+C_B = 1.5
+# convert r_A to k; elementary reaction
+# 2A + B -> C
+k = r_A / C_A**2 / C_B
+# linearize data
+ln_k = np.log(k)
+inverse_T = 1 / T_K
+# function to fit data to
+def obj_func(T, E, A):
+  return -E / 8.314 * T + np.log(A)
+# fit data
+fit_covs, _ = curve_fit(obj_func, inverse_T, ln_k)
+# check fit against data
+print("r^2:" ,r2_score(ln_k, obj_func(inverse_T, *fit_covs)))
+# Output results
+print(f"Activation energy: {round(fit_covs[0]/1000, 3)} kJ")
+print(f"Frequency factor: {round(fit_covs[1], 3)}")
+# Aggie Honor Code: An Aggie does not lie, cheat, or steal or tolerate
+# those who do.
+# I certify that this work is my own and not the work of another.
+#
+# Name: Mark Levchenko
+# Assignment #: HW 3
+# Question #: 1
+\end{minted}
+
+        Output:
+
+        Activation energy: $\boxed{124.77\text{ kJ}}$
+
+        \item Code also outputs the frequency factor:
+
+        Frequency factor: $\boxed{1.78 \cdot 10^{18}}$
+
+    \end{enumerate}
+
+
+
+
+% Problem 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2
+    \begin{enumerate}
+        \item PFR:
+        \begin{align*}
+            F_{A0} \frac{dX}{dV} &= -r_A \\
+            -r_A &= k C_A \\
+            C_A &= C_{A0} \left( \frac{1 - X}{1 + 2 X} \right) \\
+            k &= k_0 \exp\left[ \frac{E_a}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right) \right] \\
+            \frac{dX}{dV} &= k_0 \exp\left[ \frac{E_a}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right) \right] \frac{P}{RT} \left( \frac{1 - X}{1 + 2 X} \right) / F_{A0} \\
+            E_a &= 87000 \\
+            T_0 &= 323.15 \\
+            T &= 398.15 \\
+            k_0 &= 10^{-4} \\
+            F_{A0} &= 2.7 \\
+            P &= 1013250
+        \end{align*}
+
+        Solve the ODE with the following code:
+
+\begin{minted}[
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp, trapezoid
+from scipy.optimize import curve_fit, fsolve
+import time, math
+# ODE for pfr
+def HW_3_P_2_PFR(t, x):
+    # constants
+    k = 10**-4
+    E = 87000
+    R = 8.314
+    T_1 = 50 + 273.15
+    T_2 = 125 + 273.15
+    P = 10 * 101325
+    C_A0 = P / T_2 / R
+    F_A0 = 2.7
+    # get conversion for independent var array
+    X = x[0]
+    return [k * np.exp(E / R *(1/T_1 - 1/T_2)) * C_A0 * (1 - X)/(1 + 2*X) / F_A0]
+# solve ODE implicitly
+HW_3_P_2_solution_pfr = solve_ivp(HW_3_P_2_PFR, [0, 5], [0],  method="Radau", rtol=1e-6, atol=1e-6)
+# plot solution
+V_81 = np.interp(0.81, HW_3_P_2_solution_pfr.y[0], HW_3_P_2_solution_pfr.t)
+plt.plot(HW_3_P_2_solution_pfr.t, HW_3_P_2_solution_pfr.y[0])
+plt.plot(V_81, 0.81, 'rx')
+plt.xlabel(r"$V$")
+plt.ylabel(r"$X$")
+plt.title("Problem 2 Volume v Conversion of a PFR")
+# interpolate for X=0.81
+print(round(V_81, 3))
+# Aggie Honor Code: An Aggie does not lie, cheat, or steal or tolerate
+# those who do.
+# I certify that this work is my own and not the work of another.
+#
+# Name: Mark Levchenko
+# Assignment #: HW 3
+# Question #: 1a
+\end{minted}
+
+        The volume for $X=0.81$ is $\boxed{666\text{ L}}$.
+
+        Output plot:
+
+        \includesvg{CHEN461_HW3_P2_PFR.svg}
+
+        
+        \item CSTR:
+        \begin{align*}
+            V &= \frac{XF_{A0}}{-r_A} \\
+            \intertext{$-r_A$ is the same as the PFR.}
+            V &= \frac{XF_{A0}}{k_0 \exp\left[ \frac{E_a}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right) \right] \frac{P}{RT} \left( \frac{1 - X}{1 + 2 X} \right)}
+        \end{align*}
+
+        The following code creates a plot and outputs the appropriate volume:
+
+\begin{minted}[
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp, trapezoid
+from scipy.optimize import curve_fit, fsolve
+import time, math
+# constants
+k = 10**-4
+E = 87000
+R = 8.314
+T_1 = 50 + 273.15
+T_2 = 125 + 273.15
+P = 10 * 101325
+C_A0 = P / T_2 / R
+F_A0 = 2.7
+# CSTR design equation
+HW_3_P_2_CSTR = lambda X: X * F_A0 / (k * np.exp(E / R *(1/T_1 - 1/T_2)) * C_A0 * (1 - X)/(1 + 2*X))
+
+X = np.linspace(0, 0.99, 100)
+# plot CSTR conversion
+V_81 = HW_3_P_2_CSTR(0.81)
+plt.plot(HW_3_P_2_CSTR(X), X)
+plt.plot(V_81, 0.81, 'rx')
+plt.xlabel(r"$V$")
+plt.ylabel(r"$X$")
+plt.title("Problem 2 Volume v Conversion of a CSTR")
+# V at X=0.81
+print(round(V_81, 3))
+# Aggie Honor Code: An Aggie does not lie, cheat, or steal or tolerate
+# those who do.
+# I certify that this work is my own and not the work of another.
+#
+# Name: Mark Levchenko
+# Assignment #: HW 3
+# Question #: 2b
+\end{minted}
+
+        The volume for $X=0.81$ is $\boxed{2210\text{ L}}$.
+
+        Output plot:
+
+        \includesvg{CHEN461_HW3_P2_CSTR.svg}
+        
+        \item
+
+        \[
+            V_{\mathrm{CSTR}} = \frac{XF_{A0}}{k_0 \exp\left[ \frac{E_a}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right) \right] \frac{P}{RT} \left( \frac{1 - X}{1 + 2 X} \right)}
+        \]
+
+        Solve for $X$ where $V_{\mathrm{CSTR}}=1000$ L. The conversion for the CSTR becomes the initial condition for the ODE that corresponds to the PFR. The last value of the solution array for the PFR ODE is the total conversion.
+
+        The code below builds on the code from the PFR and CSTR:
+
+\begin{minted}[
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+]{python}
+# solve for CSTR conversion at 1000L = 1m^3
+cstr_conversion = fsolve(lambda x: HW_3_P_2_CSTR(x) - 1, [0.5])
+# find PFR conversion at 400L = 0.4m^3
+# CSTR conversion is initial condition for PFR ODE
+total_conversion = solve_ivp(HW_3_P_2_PFR, [0, 0.4], cstr_conversion, method="Radau", rtol=1e-6, atol=1e-6)
+# final conversion is last value in PFR ODE solution
+print(round(total_conversion.y[0][-1], 3))
+# Aggie Honor Code: An Aggie does not lie, cheat, or steal or tolerate
+# those who do.
+# I certify that this work is my own and not the work of another.
+#
+# Name: Mark Levchenko
+# Assignment #: HW 3
+# Question #: 2c
+\end{minted}
+
+        The output conversion is $\boxed{X=0.866}$.
+        
+    \end{enumerate} 
+
+
+% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 3
+    \begin{enumerate}
+        \item[(f)] 
+        \begin{align*}
+            \epsilon &= 0 \\
+            \delta &= 0 \\
+            \intertext{Elementary rate law:}
+            -r_A &= k_f P_A^2 - k_b P_B P_C \\
+            K_e &= \frac{k_f}{k_b} \\
+            k_b &= \frac{k_f}{K_e} \\
+            -r_A &= k_f P_A^2 - \frac{k_f}{K_e} P_B P_C \\
+            C_A &= C_{A0} \frac{(1 - X)}{(1 + \epsilon X)} \frac{P T_0}{P_0 T} \\
+            C_A &= C_{A0} (1 - X) \\
+            C_B = C_C &= C_{A0} \frac{\left(\Theta + \frac{1}{2} X\right)}{(1 + \epsilon X)} \frac{P T_0}{P_0 T} \\
+            C_B = C_C &= \frac{C_{A0} X}{2} \\
+            C &= \frac{P}{RT} \\
+            C_A &= \frac{P_A}{RT} \\
+            \frac{P_A}{RT} &= \frac{P_{A0}}{RT} (1 - X) \\
+            P_A &= P_{A0} (1 - X) \\
+            P_B = P_C &= \frac{P_{A0} X}{2} \\
+            -r_A &= k_f (P_{A0} (1 - X))^2 - \frac{k_f}{K_e} \frac{P_{A0} X}{2} \frac{P_{A0} X}{2} \\
+            -r_A &= k_f P_{A0}^2 \left( (1 - X)^2 - \frac{X^2}{2 K_e} \right) \\
+            \intertext{At equilibrium:}
+            -r_A &= 0 \\
+            0 &= k_f P_{A0}^2 \left( (1 - X)^2 - \frac{X^2}{2 K_e} \right) \\
+            k_f &= 4.25 \cdot 10^{-3} \\
+            P_{A0} &= 18 \\
+            K_e &= 2.5 \\
+            \intertext{Solve for $X$:}
+            \Aboxed{X &= 0.760} 
+        \end{align*}
+
+        \item[(h)]
+        \begin{align*}
+            F_{A0} \frac{dX}{dW} &= -r_A \\
+            \frac{dX}{dW} &= k_f P_{A0}^2 \left( (1 - X)^2 - \frac{X^2}{2 K_e} \right) / F_{A0} \\
+            F_{A0} &= 23.6
+        \end{align*}
+
+        The code below solves the ODE:
+
+\begin{minted}[
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp, trapezoid
+from scipy.optimize import curve_fit, fsolve
+# PFR ODE
+def HW_3_P_3_ODE(t, y):
+    X = y[0]
+    k_f = 4.25e-3
+    k_e = 2.5
+    k_b = k_f/k_e
+    P_A0 = 18
+    F_A0 = 23.6
+    return [ (k_f * (1 - X)**2 - k_b * X**2 / 4) * P_A0**2 / F_A0 ]
+
+# solve ODE implicitly
+p_3_solution = solve_ivp(HW_3_P_3_ODE, [0, 50], [0], method="Radau", rtol=1e-6, atol=1e-6)
+
+# plotting
+plt.plot(p_3_solution.t, p_3_solution.y[0])
+plt.xlabel(r"W")
+plt.ylabel(r"X")
+plt.title("Plot of Conversion v Catalyst Weight for a PBR")
+# Aggie Honor Code: An Aggie does not lie, cheat, or steal or tolerate
+# those who do.
+# I certify that this work is my own and not the work of another.
+#
+# Name: Mark Levchenko
+# Assignment #: HW 3
+# Question #: 3h
+\end{minted}
+
+        Output plot:
+
+        \includesvg{CHEN461_HW3_P3_fig.svg}
+    \end{enumerate}
+
+
+
+
+
+
+    
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,223 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{authblk}
+\usepackage{subcaption}
+\usepackage{svg}
+\usepackage{minted}
+
+
+\definecolor{LightGray}{gray}{0.9}
+
+\graphicspath{ {./} }
+\geometry{margin=0.75in}
+
+\title{CHEN 324 HW 4}
+\author[1]{Zane Hernandez}
+\author[2]{Bryce Gillilan}
+\author[3]{Mark Levchenko}
+\affil[1,2,3]{Group 11}
+\date{February 2023}
+
+\begin{document}
+% \maketitle
+
+\begin{enumerate}
+
+% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 22.1-2
+    \begin{align*}
+        \intertext{From Appendix A.3}
+        H_{\mathrm{CO}_2} &= 0.186 \cdot 10^{4} \\
+        C_{\mathrm{CO}_2} &= 0.9 \cdot 10^{-4} \\
+        x_A &= \frac{C_A/M_A}{1/M_B + C_A/M_A} \\
+        M_{\mathrm{CO}_2} &= 44 \\
+        M_{\mathrm{Water}} &= 18 \\
+        P_{\mathrm{CO}_2} &= H_{\mathrm{CO}_2} x_{\mathrm{CO}_2} \\
+        P_{\mathrm{CO}_2} &= 0.186 \cdot 10^{4} \cdot \frac{0.9 \cdot 10^{-4}/44}{1/18 + 0.9 \cdot 10^{-4}/44} \\
+        \Aboxed{P_{\mathrm{CO}_2} &= 0.0685 \text{ atm} }
+    \end{align*}
+
+% Problem 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 22.1-4
+
+    Diagram:
+
+        
+    \begin{align*}
+        L' \frac{x_0}{1-x_0} + V'\frac{y_2}{1-y_2} &= L'\frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} \\
+        x_0 &= 0 \\
+        y_0 = \frac{1.52 \cdot 10^{4}}{2.026 \cdot 10^{5}} &= 0.075 \\
+        L' &= 2.2 \\
+        V' &= (1 - y_0) V \\
+        V' = (1 - 0.075) \cdot 5.7 &= 5.27 \\
+        \intertext{From Figure 22.1-1:}
+        H_{\mathrm{SO}_2} &= 29.6 \\
+        P_A &= H x_A \\
+        y_A &= \frac{H}{P} x_A \\
+        H' = \frac{29.6}{2.026 \cdot 10^{5}} \cdot 101325 &= 14.8 \\
+        5.27 \cdot \frac{0.075}{1-0.075} &= 2.2 \cdot \frac{x_1}{1-x_1} + 5.27 \frac{14.8x_1}{1-14.8 x_1} \\
+        0 &= 2.2 \cdot \frac{x_1}{1-x_1} + 5.27 \frac{14.8x_1}{1-14.8 x_1} - 5.27 \cdot \frac{0.075}{1-0.075} \\
+        \intertext{Solve for $x_1$}
+        \Aboxed{x_1 &= 0.00495} \\
+        y_1 &= 14.8 \cdot 0.00495 \\
+        \Aboxed{y_1 &= 0.0733} \\
+        L_1 &= \frac{L'}{1 - x_1} = \frac{2.2}{1 - 0.00495} \\
+        \Aboxed{L_1 &= 2.21 \text{ kg mol}} \\
+        V_1 &= \frac{V'}{1 - y_1} = \frac{5.7}{1 - 0.0733} \\
+        \Aboxed{V_1 &= 5.69 \text{ kg mol}} \\
+    \end{align*}
+
+% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 22.5-1
+    \begin{align*}
+        \intertext{Stage balances:}
+        L' \frac{x_0}{1-x_0} + V' \frac{y_2}{1-y_2} = L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} \\
+        L' \frac{x_1}{1-x_1} + V' \frac{y_3}{1-y_3} = L' \frac{x_2}{1-x_2} + V' \frac{y_2}{1-y_2} \\
+        L' \frac{x_2}{1-x_2} + V' \frac{y_4}{1-y_4} = L' \frac{x_3}{1-x_3} + V' \frac{y_3}{1-y_3} \\
+        V' \frac{y_2}{1-y_2} &= L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0} \\
+        V' y_2 &= \left(L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0}\right) \\
+        & - y_2 \left(L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0}\right) \\
+        V' y_2 + y_2 \left(L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0}\right) &= \left(L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0}\right) \\
+        y_2 &= \frac{\left(L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0}\right)}{V' + \left(L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0}\right)} \\
+        y_2 &= \left(\frac{V'}{L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0}} + 1\right)^{-1} \\
+        y_3 &= \left(\frac{V'}{L' \frac{x_2}{1-x_2} + V' \frac{y_2}{1-y_2} - L' \frac{x_1}{1-x_1}} + 1\right)^{-1} \\
+        y_4 &= \left(\frac{V'}{L' \frac{x_3}{1-x_3} + V' \frac{y_3}{1-y_3} - L' \frac{x_2}{1-x_2}} + 1\right)^{-1} \\
+    \end{align*}
+    \begin{align*}
+        \intertext{Fit VLE data in Appendix A.3-19 to 4$^{th}$ order polynomial}
+        y_A(x_A) &= A x_A^4 + B x_A^3 + C x_A^2 + D x_A + E \\
+        A &= 2.99092125 \cdot 10^5\\
+        B &=  -2.26812714 \cdot 10^4\\
+        C &= 642.305650 \\
+        D &= 26.9838344 \\
+        E &= - 2.85407304 \cdot 10^{-3} \\
+        y_A(x_A) &= 2.99 \cdot 10^5 x_A^4 - 2.27 \cdot 10^4 x_A^3 + 642.31 x_A^2 + 26.98 x_A - 2.85 \cdot 10^{-3}
+    \end{align*}
+
+
+    Constants:
+
+    \begin{align*}
+        x_0 &= 0 \\ 
+        L' &= \frac{6000}{18} \\
+        L' &= 333.33 \\
+        V' &= \frac{150}{28.97} \\
+        V' &= 5.178 \\
+        y_4 &= 0.2
+    \end{align*}
+
+    Algorithm to solve for $y_1$:
+
+    \begin{enumerate}
+        \item[(1)] Guess $y_1$
+        \item[(2)] Solve for $x_1$ using:
+        \[
+            y_1(x_1) = 2.99 \cdot 10^5 x_1^4 - 2.27 \cdot 10^4 x_1^3 + 642.31 x_1^2 + 26.98 x_1 - 2.85 \cdot 10^{-3}
+        \]
+        \item[(3)] Solve for $y_2$ using:
+        \[
+            y_2 = \left(\frac{V'}{L' \frac{x_1}{1-x_1} + V' \frac{y_1}{1-y_1} - L' \frac{x_0}{1-x_0}} + 1\right)^{-1}
+        \]
+        \item[(4)] Solve for $x_2$ using:
+        \[
+            y_2(x_2) = 2.99 \cdot 10^5 x_2^4 - 2.27 \cdot 10^4 x_2^3 + 642.31 x_2^2 + 26.98 x_2 - 2.85 \cdot 10^{-3}
+        \]
+        \item[(5)] Solve for $y_3$ using:
+        \[
+             y_3 = \left(\frac{V'}{L' \frac{x_2}{1-x_2} + V' \frac{y_2}{1-y_2} - L' \frac{x_1}{1-x_1}} + 1\right)^{-1}
+        \]
+        \item[(6)] Solve for $x_3$ using:
+        \[
+            y_3(x_3) = 2.99 \cdot 10^5 x_3^4 - 2.27 \cdot 10^4 x_3^3 + 642.31 x_3^2 + 26.98 x_3 - 2.85 \cdot 10^{-3}
+        \]
+        \item[(7)] Solve for $y_4$ using: 
+        \[
+            y_4 = \left(\frac{V'}{L' \frac{x_3}{1-x_3} + V' \frac{y_3}{1-y_3} - L' \frac{x_2}{1-x_2}} + 1\right)^{-1}
+        \]
+        \item[(8)] Check that the $y_4$ calculated equals the $y_4$ specification from the problem. If they are not equal, return to step 1. Once they are equal, $y_1$ is solved for. 
+    \end{enumerate}
+
+    Using this algorithm, $\boxed{y_1 = 0.01127107}.$
+
+
+
+% Problem 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 22.5-4
+
+    Table of data from Appendix A.3-22, VLE data for Ammonia in water at 293 K
+    
+    \begin{tabular}{|c|c|}
+        \hline
+        $x_A$ & $y_A$ \\
+        \hline
+        0.137 & 0.235 \\
+        0.175 & 0.342 \\
+        \hline
+    \end{tabular}
+
+    \begin{align*}
+        L' \frac{x_0}{1 - x_0} + V' \frac{y_{N+1}}{1 - y_{N+1}} &= L' \frac{x_N}{1 - x_N} + V' \frac{y_{1}}{1 - y_{1}} \\
+        x_0 &= 0.005 \\
+        y_1 &= 0.02 \\
+        y_{N+1} &= 0.25 \\
+        x_N &= \frac{0.175 - 0.137}{0.342 - 0.235} \cdot (0.25 - 0.235) + 0.137 \\
+        x_N &= 0.142 \\
+        L_{min}' &= L' \\
+        V' &= 181.4 \cdot (1 - 0.25) \\
+        L_{min}' \frac{0.005}{1 - 0.005} + 181.4 \cdot (1 - 0.25) \cdot \frac{0.25}{1 - 0.25} &= L_{min}' \frac{0.142}{1 - 0.142} + 181.4 \cdot (1 - 0.25) \cdot \frac{0.02}{1 - 0.02} \\
+        \intertext{Solve for $L_{min}'$}
+        \Aboxed{L_{min}' &= 264.56 \text{ kg mol/h}}
+    \end{align*}
+
+    Plot:
+
+    \includesvg{324HW4_2254.svg}
+
+% Problem 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 22.5-5
+    \begin{align*}
+        x_0 &= 0.04 \\
+        y_{N+1} &= 0 \\
+        y &= 25x \\
+        x_N &= 0.002 \\
+        y &= 25 \cdot x \\
+        V &= 11.42 \\
+        L &= 300 \\
+        \intertext{Solve for $y_1$ from overall mass balance}
+        L' \frac{x_0}{1-x_0} + V' \frac{y_{N+1}}{1-y_{N+1}} &= L' \frac{x_N}{1-x_N} + V' \frac{y_1}{1-y_1} \\
+        300 \cdot (1 - 0.04) \cdot \frac{0.04}{1-0.04} + 11.42 \frac{0}{1-0} &= 300 \cdot (1 - 0.04) \cdot \frac{0.002}{1-0.002} + 11.42 \frac{y_1}{1-y_1} \\
+        y_1 &= 0.5 \\
+        \intertext{Finding number of stages}
+        \intertext{Calculate $x_n$ from $y_n$ starting at $y_1$}
+        x_n &= \frac{y_n}{25} \\
+        \intertext{Then calculate $y_{n+1}$ from}
+        L' \frac{x_{n-1}}{1-x_{n-1}} + V' \frac{y_{n+1}}{1-y_{n+1}} &= L' \frac{x_n}{1-x_n} + V' \frac{y_n}{1-y_n} \\
+        \intertext{Repeat the above steps until $x_n$ is less than the $x_N$ specification, $x_N=0.002$}
+        \intertext{Find intermediate stage}
+        N_i &= \frac{x_N - x_{n-1}}{x_{n} - x_{n-1}} \\
+        N_i &= \frac{0.002 - 0.003481}{0.001448 - 0.003481} = 0.728\\
+        \intertext{Add $N_i$ to the stage for $x_{n-1}$}
+        N &= 5 + 0.728 \\
+        \Aboxed{N &= 5.728}
+    \end{align*}
+
+    Plot:
+
+    \includesvg{324HW4_2255.svg}
+
+
+\end{enumerate}
+\end{document}

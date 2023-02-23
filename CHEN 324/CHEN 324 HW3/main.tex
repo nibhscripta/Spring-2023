@@ -1,0 +1,268 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{authblk}
+\usepackage{subcaption}
+
+
+\geometry{margin=0.75in}
+
+\title{CHEN 324 HW 3}
+\author[1]{Zane Hernandez}
+\author[2]{Bryce Gillilan}
+\author[3]{Mark Levchenko}
+\affil[1,2,3]{Group 11}
+\date{January 2023}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 21.1-2
+    \begin{enumerate}
+        \item 
+        \begin{align*}
+            N_A &= \frac{D_{AB}^*}{z_2 - z_1} (C_{A2} - C_{A1}) \\
+            N_A &= \frac{D_{AB}^*}{(z_2 - z_1)(1 - y_A)_M} (C_{A2} - C_{A1}) \\
+            \intertext{Lump scalars into $k$}
+            k'_c &= \frac{D_{AB}^*}{z_2 - z_1} \\
+            k_c &= \frac{D_{AB}^*}{(z_2 - z_1)(1 - y_A)_M} \\
+            k_c &= \frac{k'_c}{(1 - y_A)_M} \\
+            N_A &= k_c (C_{A2} - C_{A1}) \\
+            N_A &= k_c (y_{A2} - y_{A1}) C \\
+            N_A &= k_y (y_{A2} - y_{A1}) \\
+            k_y (y_{A2} - y_{A1}) &= k_c (y_{A2} - y_{A1}) C \\
+            k_y &= k_c C \\
+            \Aboxed{k_y &= \frac{k'_c C}{(1 - y_A)_M}} \\
+            C &= \frac{P}{RT} \\
+            N_A &= k_c (y_{A2} - y_{A1}) \frac{P}{RT} \\
+            N_A &= k_c (P_{A2} - P_{A1}) \frac{1}{RT} \\
+            N_A &= k_G (P_{A2} - P_{A1}) \\
+            k_G (P_{A2} - P_{A1}) &= k_c (P_{A2} - P_{A1}) \frac{1}{RT} \\
+            k_G &= \frac{k_c}{RT} \\
+            \Aboxed{k_G &= \frac{k'_c}{RT (1 - y_A)_M}} \\
+        \end{align*}
+        \item
+        \begin{align*}
+            N_A &= k_c (x_{A2} - x_{A1}) C \\
+            k_c &= k_L \\
+            N_A &= k_L (x_{A2} - x_{A1}) C \\
+            N_A &= k_x (x_{A2} - x_{A1}) \\
+            k_x (x_{A2} - x_{A1}) &= k_L (x_{A2} - x_{A1}) C \\
+            \Aboxed{k_x &= k_L C} \\
+            k_L &= \frac{k'_L}{(1 - x_A)_M} \\
+            k'_x &= k'_L C \\
+            k_L &= \frac{k'_x}{C (1 - x_A)_M} \\
+            \Aboxed{k'_x &= k_L C (1 - x_A)_M} \\
+        \end{align*}
+        \item
+        \begin{align*}
+            N_A &= k_G (P_{A1} - P_{A2}) \\
+            N_A &= k_G (y_{A1} - y_{A2}) P \\
+            N_A &= k_y (y_{A1} - y_{A2}) \\
+            k_y (y_{A1} - y_{A2}) &= k_G (y_{A1} - y_{A2}) P \\
+            \Aboxed{k_y &= k_G P} \\
+            C &= \frac{P}{RT} \\
+            P &= CRT \\
+            N_A &= k_G (y_{A1} - y_{A2}) CRT \\
+            N_A &= k_G (C_{A1} - C_{A2}) RT \\
+            N_A &= k_c (C_{A1} - C_{A2}) \\
+            k_c (C_{A1} - C_{A2}) &= k_G (C_{A1} - C_{A2}) RT \\
+            \Aboxed{k_c &= k_G RT} \\
+        \end{align*}
+    \end{enumerate}
+
+% Problem 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 21.1-3
+    \begin{align*}
+        x_{A1} &= 2 \cdot 10^{-5} \\
+        P_{A1} &= 609 \cdot 2 \cdot 10^{-5} \\
+        P_{A1} &= 0.01218 \\
+        P_{A2} &= 0.05 \\
+        k'_c &= 9.567 \cdot 10^{-4} \\
+        k'_G &= \frac{k'_c}{RT} \\
+        k'_G &= \frac{9.567 \cdot 10^{-4}}{0.08306 \cdot 303.15} \\
+        k'_G &= 3.85 \cdot 10^{-5} \\
+        N_A &= k'_G (P_{A1} - P_{A2}) \\
+        N_A &= 9.567 \cdot 10^{-4} \cdot (0.01218 - 0.05) \\
+        \Aboxed{N_A &= -1.45 \cdot 10^{-6} \frac{\mathrm{kgmol}}{\mathrm{s}\cdot\mathrm{m}^2} } \\
+    \end{align*}
+
+
+% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 21.3-3
+    \begin{align*}
+        T &= 338.6 \\
+        P &= 101320 \\
+        v &= 3.66 \\
+        \rho &= 1.043 \\
+        \mu &= 2.03 \cdot 10^{-5} \\
+        D_{AB} &= 0.288 \cdot 10^{-4} \\
+        \intertext{Adjust $D_{AB}$ for elevated temperature:}
+        D_{AB} &= 0.288 \cdot 10^{-4} \cdot \frac{338.6^{1.75}}{315^{1.75}} \\
+        D_{AB} &= 0.327 \cdot 10^{-4}
+    \end{align*}
+    \begin{enumerate}
+        \item Single sphere
+        \begin{align*}
+            D &= 0.0254 \\
+            Re &= \frac{D v \rho}{\mu} \\
+            Re &= \frac{0.0254 \cdot 1.043 \cdot 3.66}{2.03 \cdot 10^{-5}} \\
+            Re &= 4776 \\   
+            Sc &= \frac{\mu}{\rho D_{AB}} \\
+            Sc &= \frac{2.03 \cdot 10^{-5}}{1.043 \cdot 0.327 \cdot 10^{-4}} \\
+            Sc &= 0.596 \\
+            \intertext{Gas over sphere $Sc$ = 0.6 - 2.7 and $Re$ 1 - 48,000:}
+            Sh &= 2 + 0.552 \cdot Re^{0.53} Sc^{\frac{1}{3}} \\ 
+            Sh &= 2 + 0.552 \cdot 4776^{0.53} 0.596^{\frac{1}{3}} \\
+            Sh &= 43.4 \\
+            Sh &= k_c' \frac{D}{D_{AB}} \\
+            k_c' &= \frac{Sh D_{AB}}{D} \\
+            k_c' &= \frac{43.4 \cdot 0.327 \cdot 10^{-4}}{0.0254} \\
+            k_c' &= 0.0558 \\
+            k_c' \frac{P}{RT} &= k_G' P \\
+            k_G' &= \frac{k_c'}{RT} \\
+            k_G' &= \frac{0.0558}{8.314 \cdot 101320} \cdot \frac{\mathrm{kgmol}}{1000\mathrm{mol}} \\
+            \Aboxed{k_G' &= 1.98 \cdot 10^{-8} \frac{\mathrm{kgmol}}{\mathrm{s}\cdot\mathrm{m}^2\cdot\mathrm{Pa}}}
+        \end{align*}
+        \item Packed bed of spheres
+        \begin{align*}
+            \intertext{Gas over a packed bed Re = 10 - 10,000:}
+            J_D &= \frac{0.4548}{\epsilon} \cdot Re^{-0.4069} \\
+            \epsilon &= 0.35 \\ 
+            J_D &= \frac{0.4548}{0.35} \cdot 4776^{-0.4069} \\
+            J_D &= 0.0413 \\
+            J_D &= \frac{k_c'}{v} \cdot Sc^{\frac{2}{3}} \\
+            k_c' &= \frac{J_D v}{Sc^{\frac{2}{3}}} \\
+            k_c' &= \frac{0.0413 \cdot 3.66}{0.596^{\frac{2}{3}}} \\
+            k_c' &= 0.214 \\
+            k_G' &= \frac{0.214}{8.314 \cdot 101320} \cdot \frac{\mathrm{kgmol}}{1000\mathrm{mol}} \\
+            \Aboxed{k_G' &= 7.6 \cdot 10^{-8} \frac{\mathrm{kgmol}}{\mathrm{s}\cdot\mathrm{m}^2\cdot\mathrm{Pa}}}
+        \end{align*}
+    \end{enumerate}
+
+% Problem 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 21.4-2
+    \begin{align*}
+        N_{Sc} &= \frac{\mu_c}{\rho_c D_{AB}} \\
+        \mu_c &= 6.947 \cdot 10^{-4} \\
+        \rho_c &= 944 \\
+        D_{AB} &= 3.25 \cdot 10^{-9} \\
+        N_{Sc} &= \frac{6.947 \cdot 10^{-4}}{944 \cdot 3.25 \cdot 10^{-9} } \\
+        N_{Sc} &= 215 \\
+        k_L' &= \frac{2 D_{AB}}{D_p} + 0.31 N_{Sc}^{-\frac{2}{3}} \left( \frac{\Delta\rho \mu_c g}{\rho_c^3} \right) \\
+        \rho_p &= 1100 \\
+        D_p &= 0.667 \cdot 10^{-6} \\
+        k_L' &= \frac{2 \cdot 3.25 \cdot 10^{-9} }{0.667 \cdot 10^{-6}} + 0.31 \cdot 215^{-\frac{2}{3}} \left( \frac{(944-1100) \cdot 6.947 \cdot 10^{-4} \cdot 9.81}{944^3} \right) \\
+        k_L' &= 9.73 \cdot 10^{-3} \\
+        k_L &= k_L' \\
+        N &= k_L (C_{A1} - C_{A2}) \\
+        C_{A2} &= 0 \\
+        C_{A1} &= 2.29 \cdot 10^{-4} \\
+        N_A &= 9.73 \cdot 10^{-3} \cdot (2.29 \cdot 10^{-4} - 0) \\
+        N_A &= 2.23 \cdot 10^{-6} \frac{\mathrm{kg mol}}{\mathrm{m}^2 \mathrm{s}} \\
+        A &= \pi D^2 \\
+        V &= \frac{\pi}{6} D^3 \\
+        V_T &= \frac{m}{\rho} \\
+        V_T &= \frac{5}{1000 \cdot 1100} = 4.5 \cdot 10^{-6} \\
+        V &= \frac{\pi}{6} \cdot (0.667 \cdot 10^{-6})^3 = 1.55 \cdot 10^{-19} \\
+        N &= \frac{V_T}{V} = \frac{4.5 \cdot 10^{-6}}{1.55 \cdot 10^{-19}} = 2.93 \cdot 10^{13} \\
+        A &= \pi \cdot (0.667 \cdot 10^{6})^2 = 1.39 \cdot 10^{-12} \\
+        A_T &= N A = 2.93 \cdot 10^{13} \cdot 1.39 \cdot 10^{-12} = 40.9 \\
+        N &= A_T N_A = 2.23 \cdot 10^{-6} \cdot 40.5 \\
+        \Aboxed{N &= 9.12 \cdot 10^{-5} \frac{\mathrm{kg mol}}{\mathrm{s}}}
+    \end{align*}
+
+% Problem 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 21.2-1
+    \begin{align*}
+        f\left( k_c', D, \rho, \mu, v, D_{AB}, g, \Delta\rho, L \right) &= 0 \\
+        \intertext{$\Pi$ groups:}
+        \Pi_1 &= D^{a_1} \rho^{b_1} \mu^{c_1} k_c' \\
+        \Pi_2 &= D^{a_2} \rho^{b_2} \mu^{c_2} v \\
+        \Pi_3 &= D^{a_3} \rho^{b_3} \mu^{c_3} D_{AB}^* \\
+        \Pi_4 &= D^{a_4} \rho^{b_4} \mu^{c_4} g \\
+        \Pi_5 &= D^{a_5} \rho^{b_5} \mu^{c_5} \Delta\rho \\
+        \Pi_6 &= D^{a_6} \rho^{b_6} \mu^{c_6} L \\
+        \intertext{$\Pi_1$:}
+        \Pi_1 &= \left( L \right)^{a_1} \left( \frac{M}{L^3} \right)^{b_1} \left( \frac{M}{LT} \right)^{c_1} \left( \frac{L}{T} \right) \\
+        a_1 - 3 b_1 - c_1 + 1 &= 0 \\
+        b_1 + c_1 &= 0 \\
+        - c_1 - 1 &= 0 \\
+        c_1 &= -1 \\
+        b_1 &= 1 \\
+        a_1 &= 1 \\
+        \Pi_1 &= \frac{D \rho k_c'}{\mu} \\
+        \intertext{$\Pi_2$:}
+        \Pi_2 &= \left( L \right)^{a_1} \left( \frac{M}{L^3} \right)^{b_1} \left( \frac{M}{LT} \right)^{c_1} \left( \frac{L}{T} \right) \\
+        a_2 - 3 b_2 - c_2 + 1 &= 0 \\
+        b_2 + c_2 &= 0 \\
+        - c_2 - 1 &= 0 \\
+        c_2 &= -1 \\
+        b_2 &= 1 \\
+        a_2 &= 1 \\
+        \Pi_2 &= \frac{D \rho v}{\mu} = N_{Re} \\
+        \intertext{$\Pi_3$:}
+        \Pi_3 &= \left( L \right)^{a_1} \left( \frac{M}{L^3} \right)^{b_1} \left( \frac{M}{LT} \right)^{c_1} \left( \frac{L^2}{T} \right) \\
+        a_3 - 3 b_3 - c_3 + 2 &= 0 \\
+        b_3 + c_3 &= 0 \\
+        - c_3 - 1 &= 0 \\
+        c_3 &= -1 \\
+        b_3 &= 1 \\
+        a_3 &= 0 \\
+        \Pi_3 &= \frac{\rho D_{AB}^*}{\mu} = \frac{1}{N_{Sc}} \\
+        \intertext{$\Pi_4$:}
+        \Pi_4 &= \left( L \right)^{a_1} \left( \frac{M}{L^3} \right)^{b_1} \left( \frac{M}{LT} \right)^{c_1} \left( \frac{L}{T^2} \right) \\
+        a_4 - 3 b_4 - c_4 + 1 &= 0 \\
+        b_4 + c_4 &= 0 \\
+        - c_4 - 2 &= 0 \\
+        c_4 &= -2 \\
+        b_4 &= 2 \\
+        \Pi_4 &= \frac{D^3 \rho^2 g}{\mu^2}
+        \intertext{$\Pi_5$:}
+        \Pi_5 &= \left( L \right)^{a_1} \left( \frac{M}{L^3} \right)^{b_1} \left( \frac{M}{LT} \right)^{c_1} \left( \frac{M}{L^3} \right) \\
+        a_5 - 3 b_5 - c_5 - 3 &= 0 \\
+        b_5 + c_5 + 1 &= 0 \\
+        - c_5 &= 0 \\
+        c_5 &= 0 \\
+        b_5 &= -1 \\
+        a_5 &= 0 \\
+        \Pi_5 &= \frac{\Delta\rho}{\rho}
+        \intertext{$\Pi_6$:}
+        \Pi_6 &= \left( L \right)^{a_1} \left( \frac{M}{L^3} \right)^{b_1} \left( \frac{M}{LT} \right)^{c_1} \left( L \right) \\
+        a_6 - 3 b_6 - c_6 + 1 &= 0 \\
+        b_6 + c_6 &= 0 \\
+        - c_6 &= 0 \\
+        c_6 &= 0 \\
+        b_6 &= 0 \\
+        a_6 &= -1 \\
+        \Pi_6 &= \frac{L}{D} \\
+        \intertext{Final dimensionless groups:}
+        \Pi_1 = \frac{D \rho k_c'}{\mu}, \Pi_2 = \frac{D \rho v}{\mu}, \Pi_3 &= \frac{\rho D_{AB}^*}{\mu}, \Pi_4 = \frac{D^3 \rho^2 g}{\mu^2}, \Pi_5 = \frac{\Delta\rho}{\rho}, \Pi_6 = \frac{L}{D} \\
+        \intertext{Rearrangements:}
+        \frac{\Pi_1}{\Pi_3} &= \frac{\frac{D \rho k_c'}{\mu}}{\frac{\rho D_{AB}^*}{\mu}} =  \frac{k_c' D}{D_{AB}^*} = N_{Sh} \\
+        \Pi_6^3 \cdot \Pi_4 \cdot \Pi_5 &= \frac{L^3}{D^3} \cdot \frac{D^3 \rho^2 g}{\mu^2} \cdot \frac{\Delta\rho}{\rho} = \frac{g L^3 \rho \Delta \rho}{\mu^2} = N_{Gr} \\
+        \Pi_2 &= \frac{D v \rho}{\mu} = N_{Re} \\
+        \frac{1}{\Pi_3} &= \frac{\mu}{\rho D_{AB}^*} = N_{Sc} \\
+        \intertext{Final dimensionless relationship:}
+        \frac{\Pi_1}{\Pi_3} &= f\left( \Pi_6^3 \cdot \Pi_4 \cdot \Pi_5, \Pi_2, \frac{1}{\Pi_3} \right) \\
+        \Aboxed{\frac{k_c' D}{D_{AB}^*} &= f\left( \frac{g L^3 \rho \Delta \rho}{\mu^2}, \frac{D v \rho}{\mu}, \frac{\mu}{\rho D_{AB}^*} \right)} \\
+        N_{Sh} &= f\left( N_{Gr}, N_{Re}, N_{Sc} \right)
+    \end{align*}
+
+\end{enumerate}
+\end{document}

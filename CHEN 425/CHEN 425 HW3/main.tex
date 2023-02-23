@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{siunitx}
+\definecolor{LightGray}{gray}{0.9}
+
+\graphicspath{ {./} }
+\geometry{margin=0.75in}
+
+\title{CHEN 425 HW2}
+\author{Mark Levchenko}
+\date{January 2023}
+
+\begin{document}
+
+\begin{enumerate}
+% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Problem 2.16
+    \begin{align*}
+        \text{Depreciation} &= \frac{\$500 - \$50}{10} \text{ MM/yr} = \$45\text{ MM/yr} \\
+        \mathrm{Sales} &= \$1000/\mathrm{ton} \cdot \mathrm{Production} \\
+        \mathrm{AOC} &= \$250/\mathrm{ton} \cdot \mathrm{Production} \\
+        \text{Fixed charges} &= \$45\text{ MM/yr} + \$30\text{ MM/yr} + \$250/\mathrm{ton} \cdot \mathrm{Production} \\
+        \$1000/\mathrm{yr} \cdot \mathrm{Production} &= \$45\text{ MM/yr} + \$30\text{ MM/yr} + \$250/\mathrm{ton} \cdot \mathrm{Production} \\
+        \Aboxed{\mathrm{Production} &= 100,000 \text{ ton/yr}}
+    \end{align*}
+
+% Problem 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Problem 2.17
+    \begin{align*}
+        \mathrm{Production} &= \frac{1}{3} \cdot 300000 \text{ ton/yr} = 100000 \text{ ton/yr} \\
+        \mathrm{Sales} &= \mathrm{Price} \cdot 100000 \text{ ton/yr} \\
+        \mathrm{AOC} &= \$250/\mathrm{ton} \cdot 100000 \text{ ton/yr} = \$25\text{ MM/yr} \\
+        \text{Fixed charges} &= \$45\text{ MM/yr} + \$30\text{ MM/yr} + \$25\text{ MM/yr} = \$100\text{ MM/yr} \\
+        \mathrm{Price} \cdot 100000 \text{ ton/yr} &= \$100\text{ MM/yr} \\
+        \Aboxed{\mathrm{Price} &= \$1,000/\mathrm{ton}}
+    \end{align*}
+
+% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Problem 2.18
+    \begin{align*}
+        P &= \$10000 \cdot (1 + 0.06)^{10} \\
+        \Aboxed{P &= \$17,909}
+    \end{align*}
+
+% Problem 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Problem 2.19
+    \begin{align*}
+        P &= \$10000 \cdot (1 + 0.005)^{10\cdot12} \\
+        \Aboxed{P &= \$18,194}
+    \end{align*}
+
+    Compounding interest more often leads to higher interest payments. This problem and the one before appear to both have a 6\% interest rate, but this problem has a higher interest payment due to more frequent compounding.
+
+% Problem 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Problem 2.20
+    \begin{align*}
+        \intertext{Present sum of annuity}
+        A &= \$24000 \cdot \frac{(1 + 0.08)^{20} - 1}{0.08 \cdot (1 + 0.08)^{20}} \\
+        A &= \$235636 \\
+        \mathrm{Max} &= \$235636 + \$20000 \\
+        \Aboxed{\mathrm{Max} &= \$255,636}
+    \end{align*}
+
+
+
+\end{enumerate}
+
+\end{document}
