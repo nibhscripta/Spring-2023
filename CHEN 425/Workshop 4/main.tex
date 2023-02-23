@@ -52,12 +52,13 @@ In order to meet the required distillate and bottoms specifications with the 65\
 \subsection{Part C}
 \begin{enumerate}
     \item The single section column with sieve trays requires a diameter of 9.86464 ft.
-    \item In the two-section column, the diameter of the section below the feed tray is 9.26729 ft, and the diameter of the section above the feed tray is 9.86485 ft. The smaller diameter of the lower section the diameter will save money on the capital costs of the column and the trays.
-    \item The packed column is half the height of the column with trays, but its diameter is much larger. The diameter of the packed column is 14.3397 ft. The column itself will be much cheaper; however, packing is much more expensive than trays. The trays may also require less maintenance, and thus will have lower operating costs.
+    \item In the two-section column, the diameter of the section below the feed tray is 9.26729 ft, and the diameter of the section above the feed tray is 9.86485 ft. The smaller diameter of the lower section will allow the column to be built for less money. The multi-section design should be selected if savings in capital costs are desired.
+    \item The multi-section column allows for one section to be smaller. With a smaller diameter, less material is needed for the shell and smaller trays are required. The need for less material decreases the capital costs of the column. However, the smaller diameter of the lower section may decrease the structural integrity of the column.
 \end{enumerate}
 
 
 \subsection{Part D}
+The packed column is half the height of the column with trays, but its diameter is much larger. The diameter of the packed column is 14.3397 ft. The column itself will be much cheaper; however, packing is much more expensive than trays. The trays may also require less maintenance.
 
 \section{Discussion of Simulation Results}
 
@@ -65,13 +66,15 @@ In order to meet the required distillate and bottoms specifications with the 65\
 The distillate flow rate combined with the purity of the distillate means that almost all of the Methanol is being recovered in the distillate stream. The condenser and reboiler duties seem reasonably achievable in an industrial setting. The operation of the column can probably be achieved economically provided that the price of methanol is high enough.
 
 \subsection{Part B}
-Clearly the efficiency of the stages has a major impact on the operation of the column. The reflux ration had to be increased significantly in order to meet the required purity in the distillate. The flow rate of the distillate is almost identical as a result of the methanol and water specifications. Furthermore, notice that the reboiler and condenser duties increases significantly. As a result, the efficiency of the stages will have a major impact on the operating costs of the column.
+Clearly the efficiency of the stages has a major impact on the operation of the column. The reflux ratio had to be increased significantly in order to meet the required purity in the distillate. The flow rate of the distillate is almost identical as a result of the methanol and water specifications. Furthermore, notice that the reboiler and condenser duties increased significantly. As a result, the efficiency of the stages will have a major impact on the operating costs of the column.
 
 \subsection{Part C}
-The height of the single section and the two-section column are the same. The diameter of the lower section of the two-section column is less than the diameter of the single section column. The smaller diameter of the lower section of the two-section column will lead to a lower capital cost of the column and the trays as smaller trays will are required.
+The height of the single section and the two-section column are the same. The diameter of the lower section of the two-section column is less than the diameter of the single section column. The smaller diameter of the lower section of the two-section column will lead to a lower capital cost of the column and the trays as smaller trays are required.
 
 \subsection{Part D}
 The height of the packed column is much smaller which will result in a lower capital cost of the column shell. However, in packed columns, almost the entire inside of the column needs to be filled with material as opposed to columns with trays which only need sheet metal spaced every few feet. The higher material costs combined with the added complexity of packing result in a much higher overall capital cost of installing a packed column. Packed columns also require more work during installation and additional structures inside the column to support the packing and ensure even distribution of the fluid into the packing. However, packing generally is more efficient than trays are, and the increased efficiency can offset the capital costs by lowering operating costs. In the right situation, using packing inside a distillation column can have tremendous benefits.
+
+The condenser and reboiler duties for the packed column and both columns with trays are the same. In every design, the same amount of fluid is heated and cooled, and so the amount of heat tranfer required is identical. However, it is possible for the packing to be much more efficient than the trays. If the higher efficiency is accounted for, the packed column would require less heat tranfer overall as it would be more efficient than the column with trays.
 
 
 
@@ -81,15 +84,15 @@ Main flowsheet:
 \begin{center}
     \includegraphics[scale=0.5]{main flowsheet.png}
 \end{center}
-Part A Reflux ratio Design spec results:
+Part A Reflux ratio design spec results:
 \begin{center}
     \includegraphics{reflux design spec.png}
 \end{center}
-Part B Distillate rate design spec results:
+Part A Distillate rate design spec results:
 \begin{center}
     \includegraphics{distillate rate spec.png}
 \end{center}
-Part B Reflux ratio Design spec results:
+Part B Reflux ratio design spec results:
 \begin{center}
     \includegraphics{reflux design spec B.png}
 \end{center}
@@ -135,5 +138,10 @@ Part D Packed column results:
 
 
 \section{Conclusions}
+The reflux ratio, reboiler duty, and condenser duty seem practically achievable. Given that the rest of the process for producing methanol is profitable, this distillation column can be economically viable.
+
+The efficiency of the stages in the column could negate any econmic viability. Part B illustrated that a much larger amount of reflux is necessary to maintain the purity specification. The higher reflux leads to more fluid in the column which requires more heat tranfer. Higher heat tranfer increases the operating cost of the column. If the stages are too inefficient, the column may become unprofitable.
+
+Depending on the type of column internals, the geometry of the column will change. The packed column requires a larger diameter but is shorter compared to the column with trays. In Part C, a column was designed in two sections. The upper section of the column had approximately the same diameter as the single section column, the lower section had a smaller diameter. Splitting the column into sections allowed for a part of the column to be smaller requiring less material. Generally, buying a smaller column will cost less, decreasing the capital cost of the column. However, one consideration is that packing can be more expensive than trays. It is necessary to obtain an accurate estimate of the cost of the necessary trays compared to the cost of packing in order to determine whether the increased cost of packing outweighs the decreased cost of the shell. If maximum efficiency and the smallest column are desired, the packed column should be selected. If a column with trays is sufficient, then the multisection column is the better, more cost effective option.
 
 \end{document}
