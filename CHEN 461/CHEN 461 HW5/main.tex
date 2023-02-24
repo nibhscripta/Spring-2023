@@ -36,7 +36,7 @@
         Y_2(s) &= \frac{-k_2}{\tau_2 s + 1} U(s) \\
         Y(s) &= \left(\frac{k_1}{\tau_1 s + 1} - \frac{k_2}{\tau_2 s + 1}\right) U(s) \\
         U(s) &= \frac{M}{s} \\
-        \intertext{Linear combination}
+        \mathcal{L}^{-1}\left\{Y(s)\right\} &= \mathcal{L}^{-1}\left\{\left(\frac{k_1}{\tau_1 s + 1} - \frac{k_2}{\tau_2 s + 1}\right) \frac{M}{s}\right\} \\
         \Aboxed{y(t) &= k_1 M \left(1 - e^{-t/\tau_1}\right) - k_2 M \left(1 - e^{-t/\tau_2}\right)} \\
         \frac{dy}{dt} &= \frac{k_1 M}{\tau_1} e^{-t/\tau_1} - \frac{k_2 M}{\tau_2} e^{-t/\tau_2} \\
         \Aboxed{\frac{dy}{dt}(0) &= \frac{k_1 M}{\tau_1} - \frac{k_2 M}{\tau_2} }\\
@@ -137,22 +137,12 @@ diagram:
 % Problem 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \item Problem 4.2
-Additional Question:
-
-For the reaction scheme of question d), suppose that F/V = 0.5, k1 = 3, k–1 = 1.25, k2 = 0.75.
-
-→ Put your model in matrix form, i.e. in the form of Eqns. (5.6.3) and (5.6.4), using deviation variables
-
-→ Use the Control Systems Toolbox of MATLAB to:
-
-• calculate and plot the response to a unit step change in Cin,R and to a unit impulse change in Cin,R
-
-• calculate the transfer function
-
-• calculate and plot the unit step response and unit impulse response based on the transfer function
 
 \begin{enumerate}
     \item 
+    
+    State space:
+
     \begin{align*}
         V \frac{dC_R}{dt} &= F C_{in,R} - F C_R - V k_1 C_R \\
         V \frac{dC_P}{dt} &= V k_1 C_R - F C_P - V k_2 C_P
@@ -161,31 +151,46 @@ For the reaction scheme of question d), suppose that F/V = 0.5, k1 = 3, k–1 = 
     
     \item
     \begin{align*}
+        \mathcal{L}\left\{V \frac{dC_R}{dt}\right\} &= \mathcal{L}\left\{F C_{in,R} - F C_R - V k_1 C_R\right\} \\
         V C_R(s) s &= F C_{in,R}(s) - F C_R(s) - Vk_1C_R(s) \\
         C_R(s) &= \frac{F}{Vs + F + Vk_1} C_{in,R}(s) \\
+        \Aboxed{G_1(s) &= \frac{F}{Vs + F + Vk_1}} \\
+        \mathcal{L}\left\{V \frac{dC_P}{dt}\right\} &= \mathcal{L}\left\{V k_1 C_R - F C_P - V k_2 C_P\right\} \\
         V C_P(s) s &= V k_1 C_R(s) - F C_P(s) - V k_2 C_P(s) \\
         C_P(s) (V s + F + V k_2) &= V k_1 C_R(s) \\
         C_P(s) (V s + F + V k_2) &= \frac{F V k_1}{Vs + F + Vk_1} C_{in,R}(s) \\
         C_P(s) &= \frac{F V k_1}{(Vs + F + Vk_1) (V s + F + V k_2)} C_{in,R}(s) \\
-        G(s) &= \frac{F V k_1}{(Vs + F + Vk_1) (V s + F + V k_2)} \\
-        G(s) &= \frac{F V k_1}{V^2s^2 + 2FVs + V^2sk_2 + F^2 + FVk_2 + V^2k_1s + FVk_1 + V^2k_1k_2} \\
-        G(s) &= \frac{F V k_1}{V^2s^2 + s (2FV + V^2k_2 + V^2k_1) + F^2 + FVk_2 + FVk_1 + V^2k_1k_2} \\
-        G(s) &= \frac{\frac{V}{F} k_1}{\left(\frac{V}{F}\right)^2 s^2 + s \left(2\frac{V}{F} + \left(\frac{V}{F}\right)^2 (k_2 + k_1)\right) + \left(\frac{V}{F}\right)^2 + \frac{F}{V} (k_2 + k_1) + \left(\frac{V}{F}\right)^2 k_1k_2} \\
-        G(s) &= \frac{\frac{V}{F} k_1}{\left(\frac{V}{F}\right)^2 s^2 + s \left(2\frac{V}{F} + \left(\frac{V}{F}\right)^2 (k_2 + k_1)\right) + \left(\frac{V}{F} + k_1\right) \left(\frac{V}{F} + k_2\right)}
+        \Aboxed{G_2(s) &= \frac{F V k_1}{(Vs + F + Vk_1) (V s + F + V k_2)}}
     \end{align*}
 
-    \item
+    \item Partial fraction decomposition:
     \begin{align*}
-        G(s) &= \frac{k}{\tau^2 s^2 + 2 \zeta \tau s + 1} \\
-        k &= \frac{\frac{V}{F} k_1}{\left(\frac{V}{F} + k_1\right) \left(\frac{V}{F} + k_2\right)} \\
-        \tau &= \sqrt{\frac{\left(\frac{V}{F}\right)^2}{\left(\frac{V}{F} + k_1\right) \left(\frac{V}{F} + k_2\right)}} \\
-        2\tau\zeta &= \frac{\left(2\frac{V}{F} + \left(\frac{V}{F}\right)^2 (k_2 + k_1)\right)}{\left(\frac{V}{F} + k_1\right) \left(\frac{V}{F} + k_2\right)} \\
-        2\tau\zeta &= \frac{\left(2\frac{V}{F} + \left(\frac{V}{F}\right)^2 (k_2 + k_1)\right)}{\sqrt{\left(\left(\frac{V}{F} + k_1\right) \left(\frac{V}{F} + k_2\right)\right)^2}} \\
-        2\zeta \frac{V}{F} &= \frac{\left(2\frac{V}{F} + \left(\frac{V}{F}\right)^2 (k_2 + k_1)\right)}{\sqrt{\left(\frac{V}{F} + k_1\right) \left(\frac{V}{F} + k_2\right)}} \\
-        \zeta &= \frac{1 + \frac{V}{2F} (k_2 + k_1)}{\sqrt{\left(\frac{V}{F} + k_1\right) \left(\frac{V}{F} + k_2\right)}} \\
-        \tau &= \frac{\frac{V}{F}}{\sqrt{\left(\frac{V}{F} + k_1\right) \left(\frac{V}{F} + k_2\right)}}
+        \frac{1}{(Vs + F + Vk_1) (V s + F + V k_2)} &= \frac{A}{Vs + F + Vk_1} + \frac{B}{V s + F + V k_2} \\
+        1 &= A (V s + F + V k_2) + B (Vs + F + Vk_1) \\
+        1 &= s (A V + B V) + (A F + A V k_2 + B F + B V k_1) \\
+        A V + B V &= 0 \\
+        B &= -A \\
+        A F + A V k_2 + B F + B V k_1 &= 1 \\
+        A F + A V k_2 - A F - A V k_1 &= 1 \\
+        A V (k_2 - k_1) &= 1 \\
+        A &= \frac{1}{V (k_2 - k_1)} \\
+        B &= -\frac{1}{V (k_2 - k_1)} \\
+        G(s) &= \frac{F V k_1}{V (k_2 - k_1)} \left(\frac{1}{Vs + F + Vk_1} - \frac{1}{V s + F + V k_2}\right) \\
+        G(s) &= \frac{F k_1}{V (k_2 - k_1)} \left(\frac{1}{s + \frac{F}{V} + k_1} - \frac{1}{s + \frac{F}{V} + k_2}\right)
     \end{align*}
 
+    Impulse input:
+
+    \begin{align*}
+        C_{in, R} &= \frac{n_R}{V} \delta(t) \\
+        C_{in, R}(s) &= \frac{n_R}{V} \\
+        \mathcal{L}^{-1}\left\{C_P(s)\right\} &= \mathcal{L}^{-1}\left\{\frac{F k_1}{V (k_2 - k_1)} \left(\frac{1}{s + \frac{F}{V} + k_1} - \frac{1}{s + \frac{F}{V} + k_2}\right) \frac{n_R}{V}\right\} \\
+        \Aboxed{C_P(t) &= \frac{F k_1 n_R}{V^2 (k_2 - k_1)} \left(e^{-\left(\frac{F}{V} + k_1\right) t } - e^{-\left(\frac{F}{V} + k_2\right) t }\right)} \\
+        C_R(s) &= \frac{F}{Vs + F + Vk_1} \frac{n_R}{V} \\
+        \mathcal{L}^{-1}\left\{C_R(s)\right\} &= \mathcal{L}^{-1}\left\{\frac{F n_R}{V^2} \frac{1}{s + \frac{F}{V} + k_1}\right\} \\
+        \Aboxed{C_R(t) &= \frac{F n_R}{V^2} e^{-\left(\frac{F}{V} + k_1\right) t }}
+    \end{align*}
+    
     \item
 
     Reversible
@@ -199,28 +204,19 @@ For the reaction scheme of question d), suppose that F/V = 0.5, k1 = 3, k–1 = 
     Transfer Function:
 
     \begin{align*}
+        \mathcal{L}\left\{V \frac{dC_R}{dt}\right\} &= \mathcal{L}\left\{F C_{in,R} - F C_R - V k_1 C_R + V k_{-1} C_P\right\} \\
         V s C_R(s) &= F C_{in,R}(s) - C_R(s) (F + V k_1) + V k_{-1} C_P(s) \\
         C_R(s) (V s + F + V k_1) &= F C_{in,R}(s) + V k_{-1} C_P(s) \\
         C_R(s) &= \frac{F}{V s + F + V k_1} C_{in,R}(s) + \frac{V k_{-1}}{V s + F + V k_1} C_P(s) \\
+        \mathcal{L}\left\{V \frac{dC_P}{dt}\right\} &= \mathcal{L}\left\{V k_1 C_R - F C_P - V k_2 C_P - V k_{-1} C_P\right\} \\
         V s C_P(s) &= V k_1 C_R(s) - F C_P(s) - V k_2 C_P(s) - V k_{-1} C_P \\
         C_P(s) (V s + F + V k_2 + V k_{-1}) &= V k_1 C_R(s) \\
         C_P(s) (V s + F + V k_2 + V k_{-1}) &= \frac{F V k_1}{V s + F + V k_1} C_{in,R}(s) + \frac{V^2 k_{-1} k_1}{V s + F + V k_1} C_P(s) \\
         \frac{F V k_1}{V s + F + V k_1} C_{in,R}(s) &= C_P(s) \left((V s + F + V k_2 + V k_{-1}) - \frac{V^2 k_{-1} k_1}{V s + F + V k_1}\right) \\
-        (F V k_1) C_{in,R}(s) &= C_P(s) \left((V s + F + V k_2 + V k_{-1}) (V s + F + V k_1) - V^2 k_{-1} k_1\right)
+        (F V k_1) C_{in,R}(s) &= C_P(s) \left((V s + F + V k_2 + V k_{-1}) (V s + F + V k_1) - V^2 k_{-1} k_1\right) \\
+        C_P(s) &= \frac{F V k_1}{(V s + F + V k_2 + V k_{-1}) (V s + F + V k_1) - V^2 k_{-1} k_1} C_{in,R}(s) \\
+        G(s) &= \frac{F V k_1}{(V s + F + V k_2 + V k_{-1}) (V s + F + V k_1) - V^2 k_{-1} k_1} \\
     \end{align*}
-    \begin{align*}
-        C_P(s) &= C_{in,R}(s) \frac{F V k_1}{V^2 s^2 + s (2 F V + V^2 (k_1 + k_2 + k_{-1})) + (F^2 + F V (k_1 + k_2 + k_{-1}) + V^2 k_1 k_2)} \\
-        G(s) &= \frac{F V k_1}{V^2 s^2 + s (2 F V + V^2 (k_1 + k_2 + k_{-1})) + (F^2 + F V (k_1 + k_2 + k_{-1}) + V^2 k_1 k_2)}
-    \end{align*}
-
-    % \[
-    %     V^2 s^2 + s (2 F V + V^2 (k_1 + k_2 + k_{-1})) + (F^2 + F V (k_1 + k_2 + k_{-1}) + V^2 k_1 k_2 + V^2 k_{-1} k_1)
-    % \]
-
-    % \[
-    %     V^2 s^2 + s (2 F V + V^2 (k_1 + k_2 + k_{-1})) + (F^2 + F V (k_1 + k_2 + k_{-1}) + V^2 k_1 k_2)
-    % \]
-
 
     \item[(Matlab)]
     \begin{align*}
@@ -253,10 +249,10 @@ For the reaction scheme of question d), suppose that F/V = 0.5, k1 = 3, k–1 = 
         C_R \\
         C_P \\
         \end{bmatrix} + 0 \cdot du \\
-        \frac{F}{V} &= 0.5 \\
-        k_1 &= 3 \\
-        k_{-1} &= 1.25 \\
-        k_2 &= 0.75
+        & \frac{F}{V} = 0.5 \\
+        & k_1 = 3 \\
+        & k_{-1} = 1.25 \\
+        & k_2 = 0.75
     \end{align*}
 
     Response plot:
