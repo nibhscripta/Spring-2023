@@ -10,7 +10,7 @@ tf = signal.TransferFunction
 
 # constants
 F_V = 0.5
-k_1 = 3
+k_1 = 3.
 k_b = 1.25
 k_2 = 0.75
 
