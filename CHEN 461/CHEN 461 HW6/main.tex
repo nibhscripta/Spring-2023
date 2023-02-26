@@ -188,5 +188,72 @@ c) Calculate the zero-order hold discretization of the system (Eqns. (6.7.5) and
 
 \includegraphics[width=0.8\textwidth]{assets/p4hint.png}
 
+\begin{align*}
+    \frac{d}{dt} \begin{bmatrix}
+        C_R \\
+        C_I \\
+        C_P \\
+    \end{bmatrix} &= \begin{bmatrix}
+        -\left(\frac{F}{V} + k_1\right) & 0 & 0 \\
+        k_1 & -\left(\frac{F}{V} + k_2\right) & k_3 \\
+        0 & k_2 & -\left(\frac{F}{V} + k_3\right) \\
+    \end{bmatrix} \begin{bmatrix}
+        C_R \\
+        C_I \\
+        C_P \\
+    \end{bmatrix} + \begin{bmatrix}
+        \frac{F}{V} \\
+        0 \\
+        0 \\
+    \end{bmatrix} C_{R0} \\
+    & k_1 = 0.1 \\
+    & k_2 = 0.05 \\
+    & k_3 = 0.02 \\
+    & F = 10 \\
+    & V = 100 \\
+    & \frac{F}{V} = 0.1 \\
+    & C_{R0,s} = 2 \\
+    A &= \begin{bmatrix}
+        -\left(0.1 + 0.1\right) & 0 & 0 \\
+        0.1 & -\left(0.1 + 0.05\right) & 0.02 \\
+        0 & 0.5 & -\left(0.1 + 0.02\right) \\
+    \end{bmatrix} \\
+    A &= \begin{bmatrix}
+        -0.2 & 0 & 0 \\
+        0.1 & -0.15 & 0.02 \\
+        0 & 0.5 & -0.12 \\
+    \end{bmatrix} \\
+    Bu &= \begin{bmatrix}
+        0.1 \\
+        0 \\
+        0 \\
+    \end{bmatrix} \cdot 2 \\
+    Bu &= \begin{bmatrix}
+        0.2 \\
+        0 \\
+        0 \\
+    \end{bmatrix} \\
+    \intertext{At steady state:}
+    0 &= Ax + Bu \\
+    x &= -A^{-1} Bu \\
+    x &= -\begin{bmatrix}
+        -0.2 & 0 & 0 \\
+        0.1 & -0.15 & 0.02 \\
+        0 & 0.5 & -0.12 \\
+    \end{bmatrix}^{-1} \begin{bmatrix}
+        0.2 \\
+        0 \\
+        0 \\
+    \end{bmatrix} \\
+    x &= \begin{bmatrix}
+        1 \\
+        0.7059 \\
+        0.2941 \\
+    \end{bmatrix} \\
+    C_R &= 1 \\
+    C_I &= 0.7059 \\
+    C_P &= 0.2941
+\end{align*}
+
 \end{enumerate}
 \end{document}
