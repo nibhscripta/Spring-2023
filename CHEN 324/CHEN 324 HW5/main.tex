@@ -33,11 +33,109 @@
 
 % Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-    \item Problem 22.1-8
+    \item Problem 22.1-8 
+    \begin{enumerate}
+        \item 
+        \begin{align*}
+            \intertext{Fith polynomial to data in Exmaple 22.1-5}
+            y_A(x_A) &= 31.5057 x_A^4 - 13.8911 x_A^3 + 3.2917 x_A^2 + 0.2981 x_A \\
+            \intertext{Solve the system of equations:}
+            N_A &= \frac{k_y'}{(1 - y_{A})_{iM}} (y_{AG} - y_{Ai}) \\
+            N_A &= \frac{k_x'}{(1 - x_{A})_{iM}} (x_{Ai} - x_{AL}) \\
+            (1 - y_{A})_{iM} &= \frac{y_{AG} - y_{Ai}}{\ln\left(\frac{1 - y_{Ai}}{1 - y_{AG}}\right)} \\ 
+            (1 - x_{A})_{iM} &= \frac{x_{Ai} - x_{AL}}{\ln\left(\frac{1 - x_{AL}}{1 - x_{Ai}}\right)} \\
+            y_{Ai}(x_{Ai}) &= 31.5057 x_{Ai}^4 - 13.8911 x_{Ai}^3 + 3.2917 x_{Ai}^2 + 0.2981 x_{Ai} \\
+            \intertext{Where:}
+            & y_{AG} = 0.25 \\
+            & x_{AL} = 0.05 \\
+            & k_y' = 1.465 \cdot 10^{-3} \\
+            & k_x' = 1.967 \cdot 10^{-3} \\
+        \end{align*}
+        \begin{empheq}[box=\fbox]{align*}
+            x_{Ai} &= 0.1687 \\
+            y_{Ai} &= 0.1028 \\ 
+            N_A &= 2.625 \cdot 10^{-4} \text{ kg mol/s$\cdot$m$^2$}
+        \end{empheq}
+
+        \item 
+        \begin{align*}
+            y_A^* &= 31.5057 x_{AL}^4 - 13.8911 x_{AL}^3 + 3.2917 x_{AL}^2 + 0.2981 x_{AL} \\ 
+            y_A^* &= 31.5057 \cdot 0.05^4 - 13.8911 \cdot 0.05^3 + 3.2917 \cdot 0.05^2 + 0.2981 \cdot 0.05 = 0.02159 \\
+            m' &= \frac{y_{Ai} - y_A^*}{x_{Ai} - x_{AL}} \\
+            m' &= \frac{0.1028 - 0.02159}{0.1028 - 0.05} = 0.6841\\
+            (1 - y_A)_{*M} &= \frac{y_{AG} - y_A^*}{\ln\left(\frac{1 - y_A^*}{1 - y_{AG}}\right)} \\
+            (1 - y_A)_{*M} &= \frac{0.25 - 0.02159}{\ln\left(\frac{1 - 0.02159}{1 - 0.25}\right)} = 0.8591 \\ 
+            (1 - y_{A})_{iM} &= \frac{y_{AG} - y_{Ai}}{\ln\left(\frac{1 - y_{Ai}}{1 - y_{AG}}\right)} \\ 
+            (1 - y_{A})_{iM} &= \frac{0.25 - 0.1028}{\ln\left(\frac{1 - 0.1028}{1 - 0.25}\right)} = 0.8893 \\ 
+            (1 - x_{A})_{iM} &= \frac{x_{Ai} - x_{AL}}{\ln\left(\frac{1 - x_{AL}}{1 - x_{Ai}}\right)} \\
+            (1 - x_{A})_{iM} &= \frac{0.1687 - 0.05}{\ln\left(\frac{1 - 0.05}{1 - 0.1687}\right)} = 0.8214 \\
+            \frac{(1 - y_A)_{*M}}{K_y'} &= \frac{(1 - y_{A})_{iM}}{k_y'} + \frac{m' (1 - x_{A})_{iM}}{k_x'} \\
+            K_y' &= (1 - y_A)_{*M} \left(\frac{(1 - y_{A})_{iM}}{k_y'} + \frac{m' (1 - x_{A})_{iM}}{k_x'}\right)^{-1} \\
+            K_y' &= 0.8591 \cdot \left(\frac{0.8893}{1.465 \cdot 10^{-3}} + \frac{0.6841 \cdot 0.8214}{1.967 \cdot 10^{-3}}\right)^{-1} \\
+            \Aboxed{K_y' &= 9.876 \cdot 10^{-4} \text{ m/s}} \\
+            K_y &= \frac{K_y'}{(1 - y_A)_{*M}} \\
+            K_y &= \frac{9.876 \cdot 10^{-4}}{0.8591} \\
+            \Aboxed{K_y &= 1.149 \cdot 10^{-3} \text{ m/s}} \\
+            N_A &= K_y (y_{AG} - y_A^*) \\
+            N_A &= 1.149 \cdot 10^{-3} \cdot (0.25 - 0.02159) \\
+            \Aboxed{N_A &= 2.625 \cdot 10^{-4} \text{ kg mol/s$\cdot$m$^2$}}
+        \end{align*}
+
+        \item 
+        \begin{align*}
+            0.25 &= 31.5057 x_A*^4 - 13.8911 x_A*^3 + 3.2917 x_A*^2 + 0.2981 x_A* \\ 
+            x_A^* &= 0.2915 \\
+            m'' &= \frac{y_{AG} - y_{Ai}}{x_A^* - x_{AL}} \\
+            m'' &= \frac{0.25 - 0.1028}{0.2915 - 0.05} = 1.199 \\
+            (1 - x_{A})_{*M} &= \frac{x_A^* - x_{AL}}{\ln\left(\frac{1 - x_{AL}}{1 - x_A^*}\right)} \\
+            (1 - x_{A})_{*M} &= \frac{0.2915 - 0.05}{\ln\left(\frac{1 - 0.05}{1 - 0.2915}\right)} = 0.8234 \\
+            \frac{(1 - x_{A})_{*M}}{K_x'} &= \frac{(1 - y_{A})_{iM}}{m'' k_y'} + \frac{(1 - x_{A})_{iM}}{k_x'} \\
+            K_x' &= (1 - x_{A})_{*M} \left(\frac{(1 - y_{A})_{iM}}{m'' k_y'} + \frac{(1 - x_{A})_{iM}}{k_x'}\right)^{-1} \\
+            K_x' &= 0.8234 \cdot \left(\frac{0.8893}{1.199 \cdot 1.465 \cdot 10^{-3}} + \frac{0.8214}{1.967 \cdot 10^{-3}}\right) \\
+            \Aboxed{K_x' &= 8.951 \cdot 10^{-4} \text{ m/s}} \\
+            K_x &= \frac{K_x'}{(1 - x_{A})_{*M}} \\
+            K_x &= \frac{8.951 \cdot 10^{-4}}{0.8234} \\
+            \Aboxed{K_x &= 1.087 \cdot 10^{-3} \text{ m/s}} \\
+            N_A &= K_x (x_A^* - x_{AL}) \\
+            N_A &= 1.087 \cdot 10^{-3} \cdot (0.2915 - 0.02) \\
+            \Aboxed{N_A &= 2.625 \cdot 10^{-4} \text{ kg mol/s$\cdot$m$^2$}}
+        \end{align*}
+    \end{enumerate}
 
 % Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
     \item Problem 22.5-12
+    \begin{align*}
+        \Delta P_{flood} &= 0.115 F_P^{0.7} \\
+        \intertext{Intalox Packing:}
+        & F_P = 41 \\
+        \Delta P_{flood} = 0.115 41^{0.7} &= 1.55 \text{ in. H$_2$O/ft packing} \\
+        \text{flow param.} &= \frac{G_L}{G_G} \left(\frac{\rho_G}{\rho_L}\right)^{0.5} \\
+        \intertext{From Example 22.3-1}
+        & \rho_G = 0.07309 \\
+        & \rho_L = 62.25 \\
+        & \nu = 0.8963 \\
+        & \frac{G_L}{G_G} = 2.2 \\
+        \text{flow param.} = 2.2 \cdot \left(\frac{0.07309}{62.25}\right)^{0.5} &= 0.0754 \\
+        \intertext{From Figure 22.3-1:}
+        \text{y-axis} &= 1.65 \\
+        \text{y-axis} &= v_G \left(\frac{\rho_G}{\rho_L - \rho_G}\right)^{0.5} F_P^{0.5} \nu^{0.05} \\
+        v_G &= 1.65 \cdot \left[\left(\frac{0.07309}{62.25 - 0.07309}\right)^{0.5} \cdot 41^{0.5} \cdot 0.8963^{0.05}\right]^{-1} \\
+        v_G &= 7.56 \\
+        G_G &= v_G \rho_G \\
+        G_G = 7.56 \cdot 0.07309 &= 0.552 \\
+        \intertext{At 60\% flood:}
+        G_{G, flood} = 0.552 \cdot 0.6 &= 0.331 \\
+        A_c &= \frac{G_G}{G_{G, flood}} \\
+        A_c &= \frac{\pi}{4} D^2 \\
+        D &= \sqrt{\frac{4}{\pi} \frac{G_G}{G_{G, flood}}} \\
+        D &= \sqrt{\frac{4}{\pi} \cdot \frac{2000 / 3600}{0.331}} \\
+        \Aboxed{D &= 1.46 \text{ ft}} \\
+        \intertext{For pressure drop at 60\% flood:}
+        \text{New capacity param} = 1.65 \cdot 0.6 &= 0.99 \\
+        \intertext{From Figure 22.3-1:}
+        \Aboxed{\Delta P_{flood} &= 0.25 \text{ in. H$_2$O/ft packing}}
+    \end{align*}
 
 
 \end{enumerate}
