@@ -1,7 +1,9 @@
 import numpy as np
-from scipy import linalg
+from scipy import linalg, signal
 import matplotlib.pylab as plt
 import math
+
+import pprint
 
 
 def steady_state_composition(A, B) -> None:
@@ -59,7 +61,9 @@ def plot_step_response(A, B):
     plt.plot(t_plot, step_response(t_plot, M, A, B, c_C_R))
     plt.plot(t_plot, step_response(t_plot, M, A, B, c_C_I))
     plt.plot(t_plot, step_response(t_plot, M, A, B, c_C_P))
-
+    plt.title("Step Response")
+    plt.xlabel("t")
+    plt.ylabel("y(t)")
     plt.legend([r"$C_R$", r"$C_I$", r"$C_P$"])
     plt.show()
 
@@ -76,7 +80,9 @@ def plot_ramp_response(A, B):
     plt.plot(t_plot, ramp_response(t_plot, M, A, B, c_C_R))
     plt.plot(t_plot, ramp_response(t_plot, M, A, B, c_C_I))
     plt.plot(t_plot, ramp_response(t_plot, M, A, B, c_C_P))
-
+    plt.title("Ramp Response")
+    plt.xlabel("t")
+    plt.ylabel("y(t)")
     plt.legend([r"$C_R$", r"$C_I$", r"$C_P$"])
     plt.show()
 
@@ -94,7 +100,9 @@ def plot_sinusoidal_response(A, B):
     plt.plot(t_plot, sinusoidal_response(t_plot, M, omega, A, B, c_C_R))
     plt.plot(t_plot, sinusoidal_response(t_plot, M, omega, A, B, c_C_I))
     plt.plot(t_plot, sinusoidal_response(t_plot, M, omega, A, B, c_C_P))
-
+    plt.title("Sinusoidal Response")
+    plt.xlabel("t")
+    plt.ylabel("y(t)")
     plt.legend([r"$C_R$", r"$C_I$", r"$C_P$"])
     plt.show()
 
@@ -128,6 +136,14 @@ def main():
 
 
     plot_sinusoidal_response(A, B)
+
+    C = np.array([1, 1, 1])
+    D = 0
+    sys = signal.lti(A, B, C, D)
+
+    pp = pprint.PrettyPrinter(indent=4)
+
+    pp.pprint(signal.cont2discrete((A, B, C, D), 0.2))
 
 if __name__ == "__main__":
     main()

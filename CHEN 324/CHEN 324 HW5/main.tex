@@ -62,7 +62,7 @@
             y_A^* &= 31.5057 x_{AL}^4 - 13.8911 x_{AL}^3 + 3.2917 x_{AL}^2 + 0.2981 x_{AL} \\ 
             y_A^* &= 31.5057 \cdot 0.05^4 - 13.8911 \cdot 0.05^3 + 3.2917 \cdot 0.05^2 + 0.2981 \cdot 0.05 = 0.02159 \\
             m' &= \frac{y_{Ai} - y_A^*}{x_{Ai} - x_{AL}} \\
-            m' &= \frac{0.1028 - 0.02159}{0.1028 - 0.05} = 0.6841\\
+            m' &= \frac{0.1028 - 0.02159}{0.1687 - 0.05} = 0.6841\\
             (1 - y_A)_{*M} &= \frac{y_{AG} - y_A^*}{\ln\left(\frac{1 - y_A^*}{1 - y_{AG}}\right)} \\
             (1 - y_A)_{*M} &= \frac{0.25 - 0.02159}{\ln\left(\frac{1 - 0.02159}{1 - 0.25}\right)} = 0.8591 \\ 
             (1 - y_{A})_{iM} &= \frac{y_{AG} - y_{Ai}}{\ln\left(\frac{1 - y_{Ai}}{1 - y_{AG}}\right)} \\ 
@@ -72,10 +72,10 @@
             \frac{(1 - y_A)_{*M}}{K_y'} &= \frac{(1 - y_{A})_{iM}}{k_y'} + \frac{m' (1 - x_{A})_{iM}}{k_x'} \\
             K_y' &= (1 - y_A)_{*M} \left(\frac{(1 - y_{A})_{iM}}{k_y'} + \frac{m' (1 - x_{A})_{iM}}{k_x'}\right)^{-1} \\
             K_y' &= 0.8591 \cdot \left(\frac{0.8893}{1.465 \cdot 10^{-3}} + \frac{0.6841 \cdot 0.8214}{1.967 \cdot 10^{-3}}\right)^{-1} \\
-            \Aboxed{K_y' &= 9.876 \cdot 10^{-4} \text{ m/s}} \\
+            \Aboxed{K_y' &= 9.876 \cdot 10^{-4} \text{ kg mol/s$\cdot$m$^2$}} \\
             K_y &= \frac{K_y'}{(1 - y_A)_{*M}} \\
             K_y &= \frac{9.876 \cdot 10^{-4}}{0.8591} \\
-            \Aboxed{K_y &= 1.149 \cdot 10^{-3} \text{ m/s}} \\
+            \Aboxed{K_y &= 1.149 \cdot 10^{-3} \text{ kg mol/s$\cdot$m$^2$}} \\
             N_A &= K_y (y_{AG} - y_A^*) \\
             N_A &= 1.149 \cdot 10^{-3} \cdot (0.25 - 0.02159) \\
             \Aboxed{N_A &= 2.625 \cdot 10^{-4} \text{ kg mol/s$\cdot$m$^2$}}
@@ -92,13 +92,130 @@
             \frac{(1 - x_{A})_{*M}}{K_x'} &= \frac{(1 - y_{A})_{iM}}{m'' k_y'} + \frac{(1 - x_{A})_{iM}}{k_x'} \\
             K_x' &= (1 - x_{A})_{*M} \left(\frac{(1 - y_{A})_{iM}}{m'' k_y'} + \frac{(1 - x_{A})_{iM}}{k_x'}\right)^{-1} \\
             K_x' &= 0.8234 \cdot \left(\frac{0.8893}{1.199 \cdot 1.465 \cdot 10^{-3}} + \frac{0.8214}{1.967 \cdot 10^{-3}}\right) \\
-            \Aboxed{K_x' &= 8.951 \cdot 10^{-4} \text{ m/s}} \\
+            \Aboxed{K_x' &= 8.951 \cdot 10^{-4} \text{ kg mol/s$\cdot$m$^2$}} \\
             K_x &= \frac{K_x'}{(1 - x_{A})_{*M}} \\
             K_x &= \frac{8.951 \cdot 10^{-4}}{0.8234} \\
-            \Aboxed{K_x &= 1.087 \cdot 10^{-3} \text{ m/s}} \\
+            \Aboxed{K_x &= 1.087 \cdot 10^{-3} \text{ kg mol/s$\cdot$m$^2$}} \\
             N_A &= K_x (x_A^* - x_{AL}) \\
             N_A &= 1.087 \cdot 10^{-3} \cdot (0.2915 - 0.02) \\
             \Aboxed{N_A &= 2.625 \cdot 10^{-4} \text{ kg mol/s$\cdot$m$^2$}}
+        \end{align*}
+
+    \end{enumerate}
+
+% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 22.5-6
+    \begin{enumerate}
+        \item
+        \begin{align*}
+            & x_0 = 0 \\
+            & y_{N+1} = 0.04 \\ 
+            & y_1 = 0.005 \\
+            & L = L' = 68 \\
+            & V = 57.8 \\
+            & D = 0.747 \\
+            V' &= V (1 - y_{N+1}) \\
+            V' &= 57.8 \cdot (1 - 0.04) \\
+            V' &= 55.5 \\
+            L' \frac{x_0}{1 - x_0} + V' \frac{y_{N+1}}{1 - y_{N+1}} &= L' \frac{x_N}{1 - x_N} + V' \frac{y_1}{1 - y_1} \\
+            68 \cdot \frac{0}{1 - 0} + 55.5 \cdot \frac{0.04}{1 - 0.04} &= 68 \cdot \frac{x_N}{1 - x_N} + 55.5 \cdot \frac{0.005}{1 - 0.005} \\
+            x_N &= 0.029
+        \end{align*} 
+    
+        Fit the data from Appendix A in the table below to find the Henry's Law constant.
+    
+        \begin{tabular}{|c|c|}
+            \hline
+            $x_A$ & $y_A$ \\
+            \hline
+            0.0208 & 0.0158 \\ 
+            0.0258 & 0.0197 \\ 
+            0.0309 & 0.0239 \\ 
+            0.0405 & 0.0328 \\ 
+            0.0503 & 0.0416 \\
+            \hline
+        \end{tabular}
+    
+        \begin{align*}
+            & H = 0.8 \\
+            & k_x'a = 0.169 \\
+            & k_y'a = 0.0739 \\
+            \intertext{At the top of the tower:}
+            -\frac{k_x'a}{k_y'a} &= \frac{y_1 - y_i}{x_0 - x_i} \\
+            y_i &= H x_i \\
+            \intertext{Solve the system for the top of the tower:}
+            -\frac{0.169}{0.0739} &= \frac{0.005 - y_i}{0 - x_i} \\
+            y_i &= 0.8 x_i \\
+            \intertext{At the top of the tower:}
+            x_i &= 0.0016 \\
+            y_i &= 0.0013 \\
+            \intertext{At the bottom of the tower:}
+            -\frac{k_x'a}{k_y'a} &= \frac{y_{N+1} - y_i}{x_N - x_i} \\
+            y_i &= H x_i \\
+            \intertext{Solve the system for the bottom of the tower:}
+            -\frac{0.169}{0.0739} &= \frac{0.04 - y_i}{0.029 - x_i} \\
+            y_i &= 0.8 x_i \\
+            \intertext{At the bottom of the tower:}
+            x_i &= 0.034 \\
+            y_i &= 0.028 \\
+            \intertext{Tower height:}
+            z &= H_L N_L \\
+            N_L &= \frac{x_N - x_0}{(x_{i,N} - x_N) - (x_{i,0} - x_0)} \ln\left(\frac{x_{i,N} - x_N}{x_{i,0} - x_0}\right) \\
+            N_L &= \frac{0.029 - 0}{(0.034 - 0.029) - (0.0016 - 0)} \ln\left(\frac{0.034 - 0.029}{0.0016 - 0}\right) \\
+            N_L &= 9.25 \\
+            \intertext{$H_L$ at the bottom of the tower:}
+            H_L &= \frac{L}{k_x'a S (1 - x_N)} \frac{(1 - x_{i,N}) - (1 - x_N)}{\ln\left(\frac{1 - x_{i,N}}{1 - x_N}\right)} \\
+            H_L &= \frac{68 / (1 - 0.029) / 3600}{0.169 \cdot \pi/4 \cdot 0.747^2 \cdot (1 - 0.029)} \frac{(1 - 0.034) - (1 - 0.029)}{\ln\left(\frac{1 - 0.034}{1 - 0.029}\right)} \\
+            H_L &= 0.2548 \\
+            \intertext{$H_L$ at the bottom of the tower:}
+            H_L &= \frac{L}{k_x'a S (1 - x_0)} \frac{(1 - x_{i,0}) - (1 - x_0)}{\ln\left(\frac{1 - x_{i,0}}{1 - x_0}\right)} \\
+            H_L &= \frac{68 / 3600}{0.169 \cdot \pi/4 \cdot 0.747^2 \cdot (1 - 0.0016)} \frac{(1 - 0.0016) - (1 - 0)}{\ln\left(\frac{1 - 0.0016}{1 - 0}\right)} \\
+            H_L &= 0.2543 \\
+            \intertext{Average $H_L$ across the tower}
+            H_L &= 0.2546 \\
+            z &= 0.2546 \cdot 9.25 \\
+            \Aboxed{z &= 2.35 \text{ m}}
+        \end{align*}
+
+        \item 
+        \begin{align*}
+            \intertext{Top of the tower calculations:}
+            y^* &= H x_0 \\
+            y^* &= 0 \\
+            m' &= \frac{y_i - y^*}{x_i - x_0} \\
+            m' &= 0.802 \\
+            (1 - y)_{*M} &= \frac{y_1 - y^*}{\ln\left(\frac{1-y^*}{1-y_1}\right)} \\
+            (1 - y)_{*M} &= 0.997 \\
+            (1 - x)_{iM} &= \frac{x_i - x_0}{\ln\left(\frac{1-x_0}{1-x_i}\right)} \\
+            (1 - x)_{iM} &= 0.999 \\
+            (1 - y)_{iM} &= \frac{y_i - y_1}{\ln\left(\frac{1-y_1}{1-y_i}\right)} \\
+            (1 - y)_{iM} &= 0.997 \\
+            K_y'a &= \frac{(1 - y)_{*M}}{\frac{(1 - y)_{iM}}{k_y'a}+\frac{m'(1 - x)_{iM}}{k_x'a}} \\
+            K_y'a &= 0.0547 \\
+            \intertext{Bottom of the tower calculations:}
+            y^* &= H x_N \\
+            y^* &= 0.0233 \\
+            m' &= \frac{y_i - y^*}{x_i - x_N} \\
+            m' &= 0.803 \\
+            (1 - y)_{*M} &= \frac{y_{N+1} - y^*}{\ln\left(\frac{1-y^*}{1-y_{N+1}}\right)} \\
+            (1 - y)_{*M} &= 0.968 \\
+            (1 - x)_{iM} &= \frac{x_i - x_N}{\ln\left(\frac{1-x_N}{1-x_i}\right)} \\
+            (1 - x)_{iM} &= 0.968 \\
+            (1 - y)_{iM} &= \frac{y_i - y_{N+1}}{\ln\left(\frac{1-y_{N+1}}{1-y_i}\right)} \\
+            (1 - y)_{iM} &= 0.966 \\
+            K_y'a &= \frac{(1 - y)_{*M}}{\frac{(1 - y)_{iM}}{k_y'a}+\frac{m'(1 - x)_{iM}}{k_x'a}} \\
+            K_y'a &= 0.0548 \\
+            N_{OG} &= \frac{y_N - y_1}{(y_1-y_1^*) - (y_N-y_N^*)} \ln\left(\frac{y_1-y_1^*}{y_N-y_N^*}\right) \\
+            N_{OG} &= 3.61 \\
+            V_{avg} &= \frac{V'}{2} \left(\frac{1}{1-y_N}+\frac{1}{y_{N+1}}\right) \\
+            V_{avg} &= 56.8 \\
+            \intertext{$K_y'a$ average over tower:}
+            K_y'a &= 0.0547 \\
+            H_{OG} &= \frac{V}{S K_y'a} \\
+            H_{OG} &= 0.657 \\
+            z &= H_{OG} N_{OG} \\
+            \Aboxed{z &= 2.37 \text{ m}}
         \end{align*}
     \end{enumerate}
 
@@ -109,7 +226,7 @@
         \Delta P_{flood} &= 0.115 F_P^{0.7} \\
         \intertext{Intalox Packing:}
         & F_P = 41 \\
-        \Delta P_{flood} = 0.115 41^{0.7} &= 1.55 \text{ in. H$_2$O/ft packing} \\
+        \Delta P_{flood} = 0.115 \cdot 41^{0.7} &= 1.55 \text{ in. H$_2$O/ft packing} \\
         \text{flow param.} &= \frac{G_L}{G_G} \left(\frac{\rho_G}{\rho_L}\right)^{0.5} \\
         \intertext{From Example 22.3-1}
         & \rho_G = 0.07309 \\
@@ -137,6 +254,34 @@
         \Aboxed{\Delta P_{flood} &= 0.25 \text{ in. H$_2$O/ft packing}}
     \end{align*}
 
+
+% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 22.7-1
+    
+    Data from Table 22.7-1, and calculated values
+
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $x$ & $L$ & $k_x'a$ & $x_i$ & $(1 - x_i)_M$ & $\frac{L (1 - x_i)_M}{k_x'a S (1 - x) (x_i - x)}$ \\
+        \hline
+        0.0 & 0.042 & 0.848 & 0.00046 & 0.9998 & 1158.72 \\
+        0.000332 & 0.04201 & 0.849 & 0.00103 & 0.9993 & 762.82 \\
+        0.000855 & 0.04203 & 0.85 & 0.00185 & 0.9986 & 534.67 \\
+        0.00201 & 0.04208 & 0.853 & 0.00355 & 0.9972 & 344.55 \\
+        0.00355 & 0.04215 & 0.857 & 0.00565 & 0.9954 & 251.84 \\
+        \hline
+    \end{tabular}
+
+    \begin{align*}
+        \intertext{Evaluate the following at different values of x}
+        (1 - x_i)_M &= \frac{(1 - x_i) - (1 - x)}{\ln\left(\frac{1 - x_i}{1 - x}\right)} \\
+        z &= \int \frac{L (1 - x_i)_M}{k_x'a S (1 - x) (x_i - x)} dx \\
+        \intertext{Evaluate the integrand of the above integral at various values of x}
+        & S = 0.0929 \\
+        \intertext{Estimate the integral with trapezoids}
+        \Aboxed{z &= 1.62 \text{ m}}
+    \end{align*}
 
 \end{enumerate}
 \end{document}
