@@ -388,16 +388,16 @@ plt.show()
     \end{center}
 
     \begin{align*}
-        C_A &= 0.04 \text{ mol/L} \\
-        V &= \frac{F \left(C_{A0} - C_A\right)}{-r_A} \\
-        V &= \frac{F \left(C_{A0} - C_A\right)}{k_1 C_A^{1/2} + k_2 C_A + k_3 C_A^2} \\
+        \Aboxed{C_{A,opt} &= 0.04 \text{ mol/L} }\\
+        V &= \frac{F \left(C_{A0} - C_{A,opt}\right)}{-r_A} \\
+        V &= \frac{F \left(C_{A0} - C_{A,opt}\right)}{k_1 C_{A,opt}^{1/2} + k_2 C_{A,opt} + k_3 C_{A,opt}^2} \\
         C_{A0} &= \frac{P_0}{R T_0} \\
-        V &= \frac{F \left(\frac{P_0}{R T_0} - C_A\right)}{k_1 C_A^{1/2} + k_2 C_A + k_3 C_A^2} \\
+        V &= \frac{F \left(\frac{P_0}{R T_0} - C_{A,opt}\right)}{k_1 C_{A,opt}^{1/2} + k_2 C_{A,opt} + k_3 C_{A,opt}^2} \\
         & F = 10 \\
         & T = 300 \\
         & P = 4 \\
         V &= \frac{10 \left(\frac{4}{0.08206 \cdot 300} - 0.04\right)}{0.004 \cdot 0.04^{1/2} + 0.3 \cdot 0.04 + 0.25 \cdot 0.04^2} \\
-        V &= 92.8 \text{ L}
+        \Aboxed{V &= 92.8 \text{ L}}
     \end{align*}
 
     Code:
