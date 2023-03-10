@@ -1,0 +1,466 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{svg}
+\definecolor{LightGray}{gray}{0.9}
+
+\graphicspath{ {./assets/} }
+\geometry{margin=0.75in}
+
+\title{CHEN 364 HW 3}
+\author{Mark Levchenko}
+\date{February 2023}
+
+\begin{document}
+
+\begin{enumerate}
+ 
+% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 1
+    \[
+        \mathrm{A} + \mathrm{B} \rightarrow \mathrm{C}  
+    \]
+    \begin{align*}
+        \intertext{Reactor 1 mole balances}
+        \frac{dN_{A,1}}{dt} &= -r_{A,1} V_1 - \frac{F N_{A,1}}{V_1} \\
+        \frac{dN_{C,1}}{dt} &= r_{A,1} V_1 - \frac{F N_{C,1}}{V_1} \\
+        V_1 &= V_{1,0} - F t \\
+        N_A &= N_B \text{ equimolar initial composition} \\
+        \intertext{Reactor 2 mole balances}
+        \frac{dN_{A,2}}{dt} &= -r_{A,2} V_2 + \frac{F N_{A,1}}{V_1} \\
+        \frac{dN_{C,2}}{dt} &= r_{A,2} V_2 + \frac{F N_{C,1}}{V_1} \\
+        V_2 &= F t \\
+        \intertext{Reactions}
+        r_{A,1} = k C_A C_B &= k \frac{N_{A,1}^2}{V_1^2} \\ 
+        r_{A,2} &= k \frac{N_{A,2}^2}{V_2^2} \\ 
+        \intertext{Solve the system of ODEs with the following paramters}
+        & k = 0.0445 \text{ L/mol/min} \\
+        & F = 10 \text{ L/min} \\
+        & V_{1,0} = 1000 \text{ L} \\
+        & C_{A0} = 2 \text{ M} \\
+        & C_A = \frac{N_A}{V}
+    \end{align*}
+
+    Reactor 1 plot:
+
+    \begin{center}
+        \includesvg[width=0.9\textwidth]{assets/p1_r1.svg}
+    \end{center}
+
+    Reactor 2 plot:
+
+    \begin{center}
+        \includesvg[width=0.9\textwidth]{assets/p1_r2.svg}
+    \end{center}
+
+    Code:
+
+\begin{minted}[
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+def ode(t, y):
+    f = y*0
+
+    N_A1 = y[0]
+    N_C1 = y[1]
+    N_A2 = y[2]
+    N_C2 = y[3]
+
+    k = 0.0445
+    F = 10
+    V_1_0 = 1000
+
+    V_1 = V_1_0 - F * t
+    V_2 = F * t
+
+    r_A1 = k * N_A1**2 / V_1**2
+        
+    if V_2 == 0:
+        r_A2 = 0
+    else:
+        r_A2 = k * N_A2**2 / V_2**2
+
+    f[0] = -r_A1 * V_1 - F * N_A1 / V_1
+    f[1] = r_A1 * V_1 - F * N_C1 / V_1
+    f[2] = -r_A2 * V_2 + F * N_A1 / V_1
+    f[3] = r_A2 * V_2 + F * N_C1 / V_1
+
+    return f
+
+V_1_0 = 1000.
+C_A1_0 = 2.
+N_A1_0 = V_1_0 *  C_A1_0
+
+
+init_cond = [N_A1_0, 0., 0., 0.]
+
+ode_kwargs = {
+    'method': 'Radau',
+    'atol': 1e-8,
+    'rtol': 1e-8,
+}
+
+sol = solve_ivp(ode, [0.001, 99.999], init_cond, **ode_kwargs)
+
+F = 10
+V_1 = V_1_0 - F * sol.t
+V_2 = F * sol.t
+
+C_A1 = sol.y[0] / V_1
+C_C1 = sol.y[1] / V_1
+C_A2 = sol.y[2] / V_2
+C_C2 = sol.y[3] / V_2
+
+plt.plot(sol.t, C_A1, label=r"$C_{A1}/C_{B1}$")
+plt.plot(sol.t, C_C1, label=r"$C_{C1}$")
+plt.xlabel(r"$t$ (min)")
+plt.ylabel(r"$C$ (M)")
+plt.title("Problem 1 Reactor 1 Concentrations")
+plt.legend()
+plt.show()
+
+
+plt.plot(sol.t, C_A2, label=r"$C_{A2}/C_{B2}$")
+plt.plot(sol.t, C_C1, label=r"$C_{C2}$")
+plt.xlabel(r"$t$ (min)")
+plt.ylabel(r"$C$ (M)")
+plt.title("Problem 1 Reactor 2 Concentrations")
+plt.legend()
+plt.show()
+\end{minted}
+% Problem 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 2
+    
+    Assume Constant volume
+
+    \begin{enumerate}
+        \item 
+        \begin{align*}
+            \intertext{Mole balances}
+            \frac{dC_A}{dt} &= -r_1 \\
+            \frac{dC_B}{dt} &= r_1 - r_2 \\
+            \frac{dC_C}{dt} &= r_2 \\
+            r_1 &= k_1 C_A \\
+            r_2 &= k_2 C_B \\
+            \intertext{Solve the system of ODEs with the following paramters}
+            & k_1 = 0.4 \text{ h$^{-1}$} \\
+            & k_2 = 0.01 \text{ h$^{-1}$} 
+        \end{align*}
+
+        Concentration plot:
+
+        \begin{center}
+            \includesvg[width=0.8\textwidth]{assets/p2_a.svg}
+        \end{center}
+
+        \item 
+        \begin{align*}
+            \intertext{Mole balances}
+            \frac{dC_A}{dt} &= -r_1 + r_{-1} \\
+            \frac{dC_B}{dt} &= r_1 - r_2 - r_{-1} \\
+            \frac{dC_C}{dt} &= r_2 \\
+            r_1 &= k_1 C_A \\
+            r_2 &= k_2 C_B \\
+            r_{-1} &= k_{-1} C_B \\
+            \intertext{Solve the system of ODEs with the following paramters}
+            & k_1 = 0.4 \text{ h$^{-1}$} \\
+            & k_2 = 0.01 \text{ h$^{-1}$} \\
+            & k_{-1} = 0.3 \text{ h$^{-1}$}
+        \end{align*}
+
+        Concentration plot:
+
+        \begin{center}
+            \includesvg[width=0.8\textwidth]{assets/p2_b.svg}
+        \end{center}
+
+        \item 
+        \begin{align*}
+            \intertext{Mole balances}
+            \frac{dC_A}{dt} &= -r_1 + r_{-1} \\
+            \frac{dC_B}{dt} &= r_1 - r_2 - r_{-1} + r_{-2} \\
+            \frac{dC_C}{dt} &= r_2 - r_{-2}\\
+            r_1 &= k_1 C_A \\
+            r_2 &= k_2 C_B \\
+            r_{-1} &= k_{-1} C_B \\
+            r_{-2} &= k_{-2} C_C \\
+            \intertext{Solve the system of ODEs with the following paramters}
+            & k_1 = 0.4 \text{ h$^{-1}$} \\
+            & k_2 = 0.01 \text{ h$^{-1}$} \\
+            & k_{-1} = 0.3 \text{ h$^{-1}$} \\
+            & k_{-2} = 0.005 \text{ h$^{-1}$}
+        \end{align*}
+
+        Concentration plot:
+
+        \begin{center}
+            \includesvg[width=0.8\textwidth]{assets/p2_c.svg}
+        \end{center}
+    \end{enumerate}
+
+    Code for all three parts:
+
+\begin{minted}[
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+from scipy.integrate import solve_ivp
+
+ode_kwargs = {
+    'method': 'Radau',
+    'atol': 1e-8,
+    'rtol': 1e-8,
+}
+
+'''
+####################
+#      Part A      #
+####################
+'''
+
+def ode_a(t, y):
+    f = y*0
+
+    C_A = y[0]
+    C_B = y[1]
+    C_C = y[2]
+
+    k_1 = 0.4
+    k_2 = 0.01
+    k_b1 = 0.3
+    k_b2 = 0.005
+
+    r_1 = k_1 * C_A
+    r_2 = k_2 * C_B
+
+    f[0] = -r_1
+    f[1] = r_1 - r_2
+    f[2] = r_2
+
+    return f
+
+C_A0 = 1.6
+
+init_cond = [C_A0, 0, 0]
+
+sol_a = solve_ivp(ode_a, [0, 20], init_cond, **ode_kwargs)
+
+plt.plot(sol_a.t, sol_a.y[0], label=r"$C_{A}$")
+plt.plot(sol_a.t, sol_a.y[1], label=r"$C_{B}$")
+plt.plot(sol_a.t, sol_a.y[2], label=r"$C_{C}$")
+plt.title("Problem 3 Part a Concentration Plot")
+plt.xlabel(r"$t$ (hr)")
+plt.ylabel("Concentration (mol/L)")
+plt.legend()
+plt.show()
+
+'''
+####################
+#      Part B      #
+####################
+'''
+
+def ode_b(t, y):
+    f = y*0
+
+    C_A = y[0]
+    C_B = y[1]
+    C_C = y[2]
+
+    k_1 = 0.4
+    k_2 = 0.01
+    k_b1 = 0.3
+    k_b2 = 0.005
+
+    r_1 = k_1 * C_A
+    r_2 = k_2 * C_B
+    r_b1 = k_b1 * C_B
+
+    f[0] = -r_1 + r_b1
+    f[1] = r_1 - r_2 - r_b1
+    f[2] = r_2
+
+    return f
+
+C_A0 = 1.6
+
+init_cond = [C_A0, 0, 0]
+
+sol_b = solve_ivp(ode_b, [0, 20], init_cond, **ode_kwargs)
+
+plt.plot(sol_b.t, sol_b.y[0], label=r"$C_{A}$")
+plt.plot(sol_b.t, sol_b.y[1], label=r"$C_{B}$")
+plt.plot(sol_b.t, sol_b.y[2], label=r"$C_{C}$")
+plt.title("Problem 3 Part b Concentration Plot")
+plt.xlabel(r"$t$ (hr)")
+plt.ylabel("Concentration (mol/L)")
+plt.legend()
+plt.show()
+
+'''
+####################
+#      Part C      #
+####################
+'''
+
+def ode_c(t, y):
+    f = y*0
+
+    C_A = y[0]
+    C_B = y[1]
+    C_C = y[2]
+
+    k_1 = 0.4
+    k_2 = 0.01
+    k_b1 = 0.3
+    k_b2 = 0.005
+
+    r_1 = k_1 * C_A
+    r_2 = k_2 * C_B
+    r_b1 = k_b1 * C_B
+    r_b2 = k_b2 * C_C
+
+    f[0] = -r_1 + r_b1
+    f[1] = r_1 - r_2 - r_b1 + r_b2
+    f[2] = r_2 - r_b2
+
+    return f
+
+C_A0 = 1.6
+
+init_cond = [C_A0, 0, 0]
+
+sol_c = solve_ivp(ode_c, [0, 20], init_cond, **ode_kwargs)
+
+plt.plot(sol_c.t, sol_c.y[0], label=r"$C_{A}$")
+plt.plot(sol_c.t, sol_c.y[1], label=r"$C_{B}$")
+plt.plot(sol_c.t, sol_c.y[2], label=r"$C_{C}$")
+plt.title("Problem 3 Part c Concentration Plot")
+plt.xlabel(r"$t$ (hr)")
+plt.ylabel("Concentration (mol/L)")
+plt.legend()
+plt.show()
+\end{minted}
+
+% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 3
+    \begin{align*}
+        S_{B/X} &= \frac{r_B}{r_X} \\
+        S_{B/Y} &= \frac{r_B}{r_Y} \\
+        S_{B/XY} &= \frac{r_B}{r_X + r_Y} \\
+        r_X &= k_1 C_A^{1/2} \\
+        r_B &= k_2 C_A \\
+        r_Y &= k_3 C_A^2 \\
+        & k_1 = 0.004 \text{ (mol/L)$^{1/2} \cdot$min$^{-1}$} \\
+        & k_2 = 0.3 \text{ min$^{-1}$} \\
+        & k_3 = 0.25 \text{ L/mol $\cdot$ min}
+    \end{align*}
+
+    Plot and determine the concentration at maximum selectivity.
+
+    \begin{center}
+        \includesvg[width=0.7\textwidth]{assets/p3.svg}
+    \end{center}
+
+    \begin{align*}
+        C_A &= 0.04 \text{ mol/L} \\
+        V &= \frac{F \left(C_{A0} - C_A\right)}{-r_A} \\
+        V &= \frac{F \left(C_{A0} - C_A\right)}{k_1 C_A^{1/2} + k_2 C_A + k_3 C_A^2} \\
+        C_{A0} &= \frac{P_0}{R T_0} \\
+        V &= \frac{F \left(\frac{P_0}{R T_0} - C_A\right)}{k_1 C_A^{1/2} + k_2 C_A + k_3 C_A^2} \\
+        & F = 10 \\
+        & T = 300 \\
+        & P = 4 \\
+        V &= \frac{10 \left(\frac{4}{0.08206 \cdot 300} - 0.04\right)}{0.004 \cdot 0.04^{1/2} + 0.3 \cdot 0.04 + 0.25 \cdot 0.04^2} \\
+        V &= 92.8 \text{ L}
+    \end{align*}
+
+    Code:
+
+\begin{minted}[
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+C_A_ran = np.linspace(0.01, 0.2, 10000)
+
+k_1 = 0.004
+k_2 = 0.3
+k_3 = 0.25
+
+SX = lambda C_A: k_2 * C_A / (k_1 * C_A**0.5)
+SY = lambda C_A: k_2 * C_A / (k_3 * C_A**2)
+SXY = lambda C_A: k_2 * C_A / (k_1 * np.sqrt(C_A) + k_3 * C_A**2)
+
+fig, ax = plt.subplots(3, figsize=(6.4, 2*4.8))
+ax[0].plot(C_A_ran, SX(C_A_ran), label="Reaction X Selectivity")
+ax[0].set_ylabel(r"$S_{B/X}$")
+ax[1].plot(C_A_ran, SY(C_A_ran), "tab:orange", label="Reaction Y Selectivity")
+ax[1].set_ylabel(r"$S_{B/Y}$")
+ax[2].plot(C_A_ran, SXY(C_A_ran), "tab:green", label="Reaction X & Y Selectivity")
+ax[2].set_ylabel(r"$S_{B/XY}$")
+ax[2].set_xlabel(r"$C_A$ (mol/L)")
+ax[0].set_title("Problem 3 Selectivity Plots")
+fig.legend()
+plt.show()
+
+C_A_opt_index = np.where(SXY(C_A_ran)==SXY(C_A_ran).max())[0][0]
+C_A_opt = C_A_ran[C_A_opt_index]
+
+print(f"Optimum C_A = {C_A_opt}")
+
+F = 10 
+C_A0 = 4 / 0.08206 / (27 + 273.15)
+print(f"CSTR volume = {F * (C_A0 - C_A_opt) / (k_1 * C_A_opt**0.5 + k_2 * C_A_opt + k_3 * C_A_opt**2)}")
+\end{minted}
+    
+% Problem 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+    \item Problem 4
+    
+    \[
+        \mathrm{A} + \mathrm{B} \rightarrow \mathrm{C} + \mathrm{D} 
+    \]
+    \[
+        \mathrm{C} + \mathrm{D} \rightarrow \mathrm{U} 
+    \]
+
+    A membrane that selectively removes C would cause the concentration of C in the reactor to be very low or nearly zero. Because C participates in the undersired reaction, a low concentration of C in the reactor will lead the undersired reaction to be slow, and thus very little of the undersired product would be produced.
+
+    Select a memebrane reactor that selectively allows C to leave.
+    
+
+\end{enumerate}
+
+
+\end{document}
