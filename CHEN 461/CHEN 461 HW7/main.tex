@@ -50,9 +50,19 @@
     \item 
     \begin{align*}
         \intertext{Linearize in deviation form}
+        \frac{dC_R}{dt} &= f_1(x, u) \\
+        \frac{dC_P}{dt} &= f_2(x, u) \\
+        A &= \begin{bmatrix}
+            \frac{\partial f_1}{\partial C_R}(x_s, u_s) & \frac{\partial f_1}{\partial C_P}(x_s, u_s) \\
+            \frac{\partial f_2}{\partial C_R}(x_s, u_s) & \frac{\partial f_2}{\partial C_P}(x_s, u_s) \\
+        \end{bmatrix} \\
         A &= \begin{bmatrix}
             -\left(\frac{F_s}{V} + k_1 + 2 k_3 C_{R,s}\right) & 0 \\
             k_1 & -\left(\frac{F_s}{V} + k_2\right) \\
+        \end{bmatrix} \\
+        B &= \begin{bmatrix}
+            \frac{\partial f_1}{\partial C_{R,in}}(x_s, u_s) & \frac{\partial f_1}{\partial F}(x_s, u_s) \\
+            \frac{\partial f_2}{\partial C_{R,in}}(x_s, u_s) & \frac{\partial f_2}{\partial F}(x_s, u_s) \\
         \end{bmatrix} \\
         B &= \begin{bmatrix}
             F_s & C_{R,in,s} - C_{R,s} \\
