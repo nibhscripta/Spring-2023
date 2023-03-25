@@ -40,7 +40,7 @@
         \alpha_{A/B} = \frac{\left(\frac{y_A}{x_A}\right)}{\left(\frac{y_B}{x_B}\right)} = \frac{\left(\frac{y_A}{x_A}\right)}{\left(\frac{1-y_A}{1-x_A}\right)}   
     \]
 
-    Plot:
+    Plot with data from Example 26.3-2:
 
     \begin{center}
         \includegraphics[width=0.8\textwidth]{assets/p1.png}
@@ -56,7 +56,7 @@
         \item 
         
         \begin{align*}
-            \intertext{Fit equilibrium data to 4$^{\text{th}}$ order polynomial.}
+            \intertext{Fit equilibrium data from Example 26.3-2 to 4$^{\text{th}}$ order polynomial.}
             y(x) &= -3.806 x^4 + 10.185 x^3 - 10.141 x^2 + 4.749 x + 0.0101 \\
             \ln \left(\frac{L_1}{L_2}\right) &= \int_{x_2}^{x_1} \frac{dx}{y-x} \\
             & L_1 = 100 \\
@@ -93,7 +93,7 @@
     \item Problem 26.3-3 
     
     \begin{align*}
-        \intertext{Fit equilibrium data to 4$^{\text{th}}$ order polynomial.}
+        \intertext{Fit equilibrium data from Tbale 26.1-1 to 4$^{\text{th}}$ order polynomial.}
         y(x) &= -0.417 x^4 + 1.493 x^3 - 2.361 x^2 + 2.285 x \\
         \ln \left(\frac{L_1}{L_2}\right) &= \int_{x_2}^{x_1} \frac{dx}{y-x} \\
         & L_1 = 100 \\
@@ -115,6 +115,8 @@
 \newpage
     \item Problem 26.4-3
     
+    Use equilibrium data from Table 26.1-1
+    
     \begin{enumerate}
         \item 
         \begin{align*}
@@ -124,7 +126,10 @@
             y' &= 0.713 \\
             R_m &= \frac{y_D - y'}{y' - x'} \\
             & y_D = 0.9 \\
-            R_m &= \frac{0.9 - 0.713}{0.9 - 0.5} \\
+            m &= \frac{0.9 - 0.713}{0.9 - 0.5} \\
+            m &= 0.46 \\
+            R_m &= \frac{m}{1 - m} \\
+            R_m &= \frac{0.46}{1 - 0.46} \\
             \Aboxed{R_m &= 0.876}
         \end{align*}
 
