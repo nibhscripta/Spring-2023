@@ -1,0 +1,53 @@
+\item Problem 1
+
+\[
+    \mathrm{A} \rightarrow \mathrm{B} + \mathrm{C}
+\]
+
+(a)
+
+\begin{align*}
+    \delta &= 1 \\
+    \intertext{No pressure drop}
+    C_A &= C_{A0} \left(\frac{1 - X}{1 + X}\right) \frac{T_0}{T} \\
+    -r_A' &= k(T) C_A \\
+    \intertext{Design equation}
+    \frac{dX}{dW} &= \frac{-r_A'}{v_0 C_{A0}} \\
+    \frac{dX}{dW} &= \frac{k(T) C_{A0} \left(\frac{1 - X}{1 + X}\right) \frac{T_0}{T}}{v_0 C_{A0}} \\
+    \frac{dX}{dW} &= \frac{k(T)}{v_0} \left(\frac{1 - X}{1 + X}\right) \frac{T_0}{T} \\
+    k(T) &= 0.133 \exp\left[\frac{E}{R}\left(\frac{1}{450} - \frac{1}{T}\right)\right] \\
+    \frac{dX}{dW} &= \frac{0.133 \exp\left[\frac{E}{R}\left(\frac{1}{450} - \frac{1}{T}\right)\right]}{v_0} \left(\frac{1 - X}{1 + X}\right) \frac{T_0}{T} \\
+    \intertext{Solve the differential equation with the following parameters}
+    & E = 31400 \\
+    & T_0 = 450 \\
+    & R = 8.314 \\
+    & v_0 = 20 \\
+    \intertext{Temperature dependence}
+    T &= \frac{X \left[-\Delta H_{\text{Rx}}^\circ(T_R)\right] + \sum\Theta_iC_{P_i}T_0 + X\Delta C_P T_R}{\left[\sum\Theta_iC_{P_i} +  X\Delta C_P\right]} \\
+    \Delta C_P = 15 + 25 - 40 &= 0 \\
+    \sum\Theta_iC_{P_i} = 0 \cdot 15 + 0 \cdot 25 + 1 \cdot 40 &= 40 \\
+    H_{\text{Rx}}^\circ(T_R) = -40000 - 50000 + 70000 &= -20000 \\
+    T &= \frac{20000X + 40 \cdot 405}{40} \\
+    \intertext{Use $T(X)$ to compue T in the differential equation}
+    T &= 450 + 500X
+\end{align*}
+
+Conversion plot:
+
+\begin{center}
+    \includesvg[width=0.8\textwidth]{assets/p1_x.svg}
+\end{center}
+
+Temperature plot:
+
+\begin{center}
+    \includesvg[width=0.8\textwidth]{assets/p1_T.svg}
+\end{center}
+
+(b)
+
+\begin{align*}
+    \intertext{Heat analysis}
+    \dot Q &= F_{A0} \left(\sum\Theta_iC_{P_i}\left(T - T_{i0}\right) - X \left[H_{\text{Rx}}^\circ(T_R) + \Delta C_P (T - T_R)\right]\right) \\
+    \dot Q &= F_{A0} \left(C_{P_A}\left(T - T_{A0}\right) - X H_{\text{Rx}}^\circ(T_R)\right) \\
+\end{align*}
