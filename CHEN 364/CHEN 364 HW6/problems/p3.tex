@@ -1,4 +1,30 @@
-\item Problem 1
+\item Problem 3
+
 \begin{align*}
-    E = mc^2    
+    \intertext{Equilibrium relationship}
+    K_e &= \frac{C_C C_D}{C_A C_B} \\
+    C_A &= 1 - X \\
+    C_C &= X \\
+    K_e &= \frac{X^2}{\left(1 - X\right)^2} \\
+    X &= \frac{\sqrt{K_e}}{1 + \sqrt{K_e}} \\
+    \intertext{Equilibrium constant as a function of temperature}
+    K_e(T) &= K_e \exp \left[\frac{\Delta H_{Rx}^\circ}{RT}\left(\frac{1}{323.15} - \frac{1}{T}\right)\right] \\
+    & K_e = 500,000 \\
+    & \Delta H_{Rx}^\circ = -30,000 \\
+    \intertext{Temperature as a function of conversion in the reactor}
+    T &= \frac{X \left[-\Delta H_{\text{Rx}}^\circ(T_R)\right] + \sum\Theta_iC_{P_i}T_0 + X\Delta C_P T_R}{\left[\sum\Theta_iC_{P_i} +  X\Delta C_P\right]} \\
+    \Delta C_P &= 0 \\
+    \sum\Theta_iC_{P_i} &= 50 \\
+    T &= \frac{30000X + 50 \cdot 300.15}{50} \\
+    T &= 600 X + 300.15 \\
+    X(T) &= \frac{T - 300.15}{600} \\
+    \intertext{Find intersections between conversion as a function of temperature in the reactor and the equilibrium relationship}
 \end{align*}
+
+Plotting the four reactors and three coolers.
+
+\begin{center}
+    \includesvg[width=0.8\textwidth]{assets/p3.svg}
+\end{center}
+
+The maximum conversion with the four reactors is $\boxed{X = 0.899}$.

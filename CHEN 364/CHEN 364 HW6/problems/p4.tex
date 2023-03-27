@@ -1,4 +1,42 @@
 \item Problem 1
+
+(a)
+
 \begin{align*}
-    E = mc^2    
+    \intertext{Reaction constant relations:}
+    & \frac{E}{R} = 20000 \\
+    & \Delta H_{Rx}^\circ = -80000 \cdot 4.184 \\
+    k(T) &= 1 \cdot \exp\left[20000 \cdot \left(\frac{1}{400} - \frac{1}{T}\right)\right] \\
+    K_c(T) &= 100 \cdot \exp\left[\frac{-80000 \cdot 4.184}{8.314} \left(\frac{1}{400} - \frac{1}{T}\right)\right] \\
+    \intertext{Raction rate law}
+    -r_A &= k C_A - \frac{k}{K_c} C_B \\
+    V &= \frac{X C_{A0} v_0}{-r_A} \\
+    C_A &= C_{A0} \left(1 - X\right) \\
+    C_B &= C_{A0} X \\
+    \tau &= \frac{X v_0}{k \left(1 - X\right) - \frac{k}{K_c} X} \\
+    X &= \frac{\tau k}{1 + \tau k \left(1 + K_c^{-1}\right)} \\
+    \tau &= 10 \\
+    \intertext{Conversion relationship with temperature}
+    X(T) &= \frac{\tau \exp\left[20000 \cdot \left(\frac{1}{400} - \frac{1}{T}\right)\right]}{1 + \tau \exp\left[20000 \cdot \left(\frac{1}{400} - \frac{1}{T}\right)\right] \left(1 + \left(100 \cdot \exp\left[\frac{-80000 \cdot 4.184}{8.314} \left(\frac{1}{400} - \frac{1}{T}\right)\right]\right)^{-1}\right)} \\
+    \intertext{G and R}
+    G(T) &= 80000 X(T) \\
+    R(T) &= C_{P0} \left(1 + \kappa\right) \left(T - T_c\right) \\
+    \kappa &= \frac{\text{UA}}{C_{P0} F_{A0}} = \frac{3600}{40 \cdot 10} = 9 \\
+    T_c &= \frac{\kappa T_a + T_0}{\kappa + 1} = \frac{9 \cdot 310.15 + 310.15}{1 + 9} = 310.15 \\
+    R(T) &= 400 \left(T - 310.15\right) \\
+    \intertext{Plot R(T) and G(T)}
 \end{align*}
+
+Lower steady-state: 310.5 K
+
+Middle steady-state: 377.4 k
+
+Upper steady-state: 418.4 K
+
+\begin{center}
+    \includesvg[width=0.8\textwidth]{assets/p4.svg}
+\end{center}
+
+(b)
+
+Find $X(418.4 K)$. Upper steady state conversion $\boxed{X=0.54}$.

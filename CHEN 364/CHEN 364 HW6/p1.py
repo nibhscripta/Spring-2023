@@ -49,7 +49,6 @@ def Q(X, T):
     F_A0 = 10 * 20 / 0.08206 / 450
     return F_A0 * (40 * (T - 450) + 20 * X)
 
-print(10 * 20 / 0.08206 / 450)
 X = sol.y[0]
 T = 450 + 500 * sol.y[0]
 plt.plot(sol.t, Q(X, T))
