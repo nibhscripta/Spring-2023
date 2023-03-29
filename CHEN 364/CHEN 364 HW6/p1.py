@@ -47,7 +47,7 @@ print(f"Final temperature: {(450 + 500 * sol.y[0])[-1]}")
 
 def Q(X, T):
     F_A0 = 10 * 20 / 0.08206 / 450
-    return F_A0 * (40 * (T - 450) + 20 * X)
+    return F_A0 * (40 * (T - 450) - 20 * X)
 
 X = sol.y[0]
 T = 450 + 500 * sol.y[0]
