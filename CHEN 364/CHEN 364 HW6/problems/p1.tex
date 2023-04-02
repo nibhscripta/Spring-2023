@@ -48,8 +48,8 @@ Temperature plot:
 
 \begin{align*}
     \intertext{Heat analysis}
-    \dot Q &= F_{A0} \left(\sum\Theta_iC_{P_i}\left(T - T_{i0}\right) - X \left[H_{\text{Rx}}^\circ(T_R) + \Delta C_P (T - T_R)\right]\right) \\
-    \dot Q &= F_{A0} \left(C_{P_A}\left(T - T_{A0}\right) - X \Delta H_{\text{Rx}}^\circ(T_R)\right) \\
+    \dot Q &= F_{A0} \left(\sum\Theta_iC_{P_i}\left(T - T_{i0}\right) + X \left[H_{\text{Rx}}^\circ(T_R) + \Delta C_P (T - T_R)\right]\right) \\
+    \dot Q &= F_{A0} X \Delta H_{\text{Rx}}^\circ(T_R) \\
     F_{A0} &= \frac{P_0 v_0}{R T_0} \\
     & P = 10 \\
     & v_0 = 20 \\
@@ -57,8 +57,8 @@ Temperature plot:
     & T_0 = 450 \\
     & C_{P_A} = 40 \\
     & \Delta H_{\text{Rx}}^\circ(T_R) = -20 \\
-    \dot Q &= \frac{10 \cdot 20}{0.08206 \cdot 450} \left(40 \cdot \left(T - 450\right) + 20 X\right)
-    \intertext{Plot with the conversion and temperature porfile obtained in the previous part.}
+    \dot Q &= - \frac{10 \cdot 20}{0.08206 \cdot 450} \cdot 20 X \\
+    \intertext{Recalculate conversion for isothermal operation.}
 \end{align*}
 
 \begin{center}
