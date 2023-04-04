@@ -29,7 +29,7 @@ Plot sink and sources composite lines.
     \intertext{Source lines; guess x-intercept}
     \text{Load} &= 0.14 \cdot \left(\text{Flow} - \text{x-intercept}\right) \text{, until x-intercept + 1400 kg/h} \\
     \text{Load} &= 0.25 \cdot \left(\text{Flow} - \text{x-intercept} - 1400\right) \\ 
-    & + 0.14 \cdot \left(x-intercept + 1400\right) \text{, until x-intercept + 1400 kg/h} \\ 
+    & + 0.14 \cdot \left(\text{x-intercept} + 1400\right) \text{, until x-intercept + 1400 kg/h} \\ 
     & \text{, until x-intercept + 10500 kg/h} \\
 \end{align*}
 
@@ -40,3 +40,9 @@ Plot the lines and vary the x-intercept until the sink and source lines intersec
 \end{center}
 
 The pinch point came at an x-intercept of 9584. The target fresh acetic acid usage is 9584 kg/h and the target minimumm discharge is 4784 kg/h.
+
+One possible way of achieving this process is by taking the discharge streams and mixing a portion of it with the fresh acetic acid feed, and then sending the mixture to the respective units.
+
+Another way of integrating the process is by reducing the fresh feed rates to the Absorber II and the Primary tower. Then, feed the entirety of the discharge from the Absorber I to the Absorber II. Then, send the rest of the recyclable discharge to the Primary Tower.
+
+The final way of integrating this process is by reducing the fresh feed rates to the Absorber II and the Primary tower. Then, combine the waste discharge streams and make of the rest of the required acetic acid to the Absorber II and the Primary tower with the combined discharge.
