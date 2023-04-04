@@ -1,0 +1,37 @@
+\item Problem 4.1
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Sources & Weight\% & Flow (kg/s) & Load (kg/s) \\
+        \hline
+        Dryer & 0.4 & 5.5 & 0.022 \\
+        Coating & 1.9 & 3.0 & 0.057 \\
+        \hline
+    \end{tabular} 
+    
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Sinks & Weight\% & Flow (kg/s) & Load (kg/s) \\
+        \hline
+        Dryer & 0.1 & 5.5 & 0.0055 \\
+        Coating & 0.2 & 3.0 & 0.006 \\
+        \hline
+    \end{tabular} 
+\end{center}
+
+Dryer source can be recycled back to the dryer inlet.
+
+\begin{align*}
+    \text{Dryer recycle} &= \frac{\text{Dryer load}}{\text{Dryer weight\%}} = \frac{0.0055}{0.4\%} \\
+    \text{Dryer recycle} &= 1.375 \text{ kg/s} \\
+    \intertext{There are still 4.125 kg/s available to recycle from the dryer.}
+    \text{Coating recycle} &= \frac{\text{Coating load}}{\text{Dryer weight\%}} = \frac{0.006}{0.4\%} \\
+    \text{Coating recycle} &= 1.5 \text{ kg/s} \\
+    \intertext{Maximum load has been achieved.}
+    \text{Total recycle} &= 2.875 \text{ kg/s} \\
+    \text{Fresh feed saved} &= 8.5 - 2.875 = 5.625 \text{ kg/s} \\
+    \text{Discharge reduced} &= 8.5 - 2.875 = 5.625 \text{ kg/s} \\
+\end{align*}
+
+Redirecting 2.875 kg/s from the dryer effluent reduces the total necessary fresh feed to 5.625 kg/s and the total discharge to 5.625 kg/s. 
