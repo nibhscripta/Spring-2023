@@ -1,0 +1,36 @@
+\item Problem 27.4-2
+
+Naming convetions are the same as the solution to Problem 2 (27.2-1).
+
+\begin{align*}
+    \intertext{Fit $4^{\text{th}}$ order polynomials to equilibrium data in Appendix A.3-24. Then,}
+    x_B &= f_1(x_A) \\
+    x_C &= f_2(x_A) \\
+    y_B &= f_3(y_A) \\
+    y_C &= f_4(y_A) \\
+    \intertext{The outlet streams leave at equilibrium.}
+    x_{A,0} L_0 &= x_{A,N} L_N + y_{A,1} V_1 \\
+    x_{B,0} L_0 &= x_{B,N} L_N + y_{B,1} V_1 \\
+    L_0 + V_{N+1} &= L_N + V_1 \\
+    & x_{A,0} = 0.25 \\ 
+    & x_{B,0} = 0.75 \\ 
+    & x_{A,N} = 0.03 \\
+    & y_{C,N+1} = 1 \\
+    & L_0 = 200 \\
+    & V_{N+1} = 600 \\
+    \intertext{Rearrange mass balances in terms of $L_N$, $V_1$, and $y_{A,1}$}
+    0.25 \cdot 200 &= 0.03 L_N + y_{A,1} V_1 \\
+    0.75 \cdot 200 &= f_1(0.03) L_N + f_3(y_{A,1}) V_1 \\
+    200 + 600 &= L_N + V_1 \\
+    \intertext{Solve the system of equations}
+\end{align*}
+
+\begin{empheq}[box=\fbox]{align*}
+    L_N &= 130.3 \text{ kg/h} \\
+    V_1 &= 669.7 \text{ kg/h} \\
+    x_{B,N} &= 0.957 \\
+    x_{C,N} &= 0.013 \\
+    y_{A,1} &= 0.354 \\
+    y_{B,1} &= 0.194 \\
+    y_{C,1} &= 0.504
+\end{empheq}

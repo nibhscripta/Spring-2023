@@ -1,0 +1,53 @@
+\item Problem 27.2-1
+
+A is acetic acid.
+
+B is water.
+
+C is isopropyl ether.
+
+x is aqueous phase.
+
+y is organic phase.
+
+\begin{align*}
+    \intertext{Fit $4^{\text{th}}$ order polynomials to equilibrium data in Appendix A.3-24. Then,}
+    x_B &= f_1(x_A) \\
+    x_C &= f_2(x_A) \\
+    y_A &= f_3(x_A) \\
+    y_B &= f_4(x_A) \\
+    y_C &= f_5(x_A) \\
+    \intertext{The compositions in the two phases are related by functions of the composition of acetic acid in the aqueous phase.}
+    \intertext{Assume that the two outlets are in equilibrium. Write component mass balances.}
+    x_{A,0} L_0 &= x_{A,N} L_N + y_{A,1} V_1 \\
+    x_{B,0} L_0 &= x_{B,N} L_N + y_{B,1} V_1 \\
+    y_{C,N+1} V_{N+1} &= x_{C,N} L_N + y_{C,1} V_1 \\
+    & x_{A,0} = 0.35 \\ 
+    & x_{B,0} = 0.65 \\ 
+    & y_{C,N+1} = 1 \\
+    & L_0 = 400 \\
+    & V_{N+1} = 400 \\
+    \intertext{Put mass balances in terms of $x_{A,N}$, $V_1$, and $L_N$ and solve.}
+    0.35 \cdot 400 &= x_{A,N} L_N + f_3(x_{A,N}) V_1 \\
+    0.65 \cdot 400 &= f_1(x_{A,N}) L_N + f_4(x_{A,N}) V_1 \\
+    400 &= f_2(x_{A,N}) L_N + f_5(x_{A,N}) V_1 \\
+    \intertext{Solve the system of equations}
+\end{align*}
+
+\begin{empheq}[box=\fbox]{align*}
+    L_N &= 342.8 \text{ kg} \\
+    V_1 &= 457.2 \text{ kg} \\
+    x_{A,N} &= 0.254 \\
+    x_{B,N} &= 0.714 \\
+    x_{C,N} &= 0.032 \\
+    y_{A,1} &= 0.115 \\
+    y_{B,1} &= 0.033 \\
+    y_{C,1} &= 0.845
+\end{empheq}
+
+\begin{align*}
+    \intertext{Percent removed}
+    \eta &= \frac{x_{A,0} L_0 - x_{A,N} L_N}{x_{A,0} L_0} \\
+    \eta &= \frac{140 - 87}{140} \\
+    \Aboxed{\eta &= 37.8\%}
+\end{align*}
