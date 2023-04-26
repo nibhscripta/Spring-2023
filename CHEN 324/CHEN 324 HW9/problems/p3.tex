@@ -1,0 +1,44 @@
+\item Problem 28.3-2
+
+(a)
+
+\begin{align*}
+    \intertext{Using the data in Problem 28.3-2, compute $1-c/c_0$}
+    & c_0 = 926 \cdot 10^{-6} \\
+    \intertext{Interpolate time for $c/c_0=0.02$}
+    \Aboxed{t_b &= 9.546 \text{ hr}} \\
+    \intertext{Calculate the following integrals numerically from the data}
+    A_1 &= \int_0^{t_b} \left(1 - \frac{c}{c_0}\right) dt \\
+    A_2 &= \int_{t_b}^{t_d} \left(1 - \frac{c}{c_0}\right) dt \\
+    A_1 &= 9.54 \\
+    A_2 &= 1.38 \\
+    t_I &= A_1 + A_2 \\
+    t_I &= 9.54 + 1.38 \\
+    t_I &= 10.9 \\
+    \text{fraction} &= \frac{A_1}{t_I} \\
+    \text{fraction} &= \frac{9.54}{10.9} \\
+    \Aboxed{\text{fraction} &= 0.873} \\
+    & H_T = 0.268 \text{ m} \\
+    H_{\text{UNB}} &= 0.268 \cdot \left(1 - 0.873\right) \\
+    \Aboxed{H_{\text{UNB}} &= 0.03396 \text{ m}} \\
+    \text{Saturation capacity} &= \dot m c_0 t_I \\
+    & \dot m = 4052 \\
+    \text{Saturation capacity} &= 4052 \cdot 926 \cdot 10^{-6} \cdot 10.9 \\
+    \Aboxed{\text{Saturation capacity} &= 40.98 \text{ kg water/$m^2$}}
+\end{align*}
+
+\newpage
+(b)
+
+\begin{align*}
+    \intertext{$H_{\text{UNB}}$ is the same}
+    & H_T = 0.4 \\
+    H_B &= 0.4 - 0.03398 \\
+    H_B &= 0.366 \\
+    \text{fraction} &= \frac{0.366}{0.4} \\
+    \Aboxed{\text{fraction} &= 0.9151} \\
+    \intertext{Old $H_B$}
+    H_B &= 0.268 - 0.03398 = 0.234 \\
+    t_b &= \frac{0.366}{0.234} \cdot 9.54 \\
+    \Aboxed{t_b &= 14.93 \text{ hr}}
+\end{align*}
