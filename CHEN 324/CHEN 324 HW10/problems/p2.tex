@@ -1,0 +1,47 @@
+\item Problem 25.2-3
+
+(a)
+
+\begin{align*}
+    & P_A' = 4 \cdot 10^{-9} \\
+    & \alpha^* = 10 \\
+    & L_f = 2000 \\
+    & \theta = 0.529 \\
+    & P_h = 40 \\
+    & P_l = 10 \\
+    & x_f = 0.5 \\
+    & t = 0.0015 \\
+    \intertext{Finding $y_p$}
+    a_1 &= \theta + \frac{P_l}{P_h} - \frac{P_l}{P_h}\theta - \alpha^*\theta - \alpha^*\frac{P_l}{P_h} + \alpha^*\frac{P_l}{P_h}\theta \\ 
+    a_1 &= 0.529 + \frac{10}{40} - \frac{10}{40} \cdot 0.529 - 10 \cdot 0.529 - 10 \cdot \frac{10}{40} + 10 \cdot \frac{10}{40} \cdot 0.529 \\
+    a_1 &= -5.82 \\
+    b_1 &= 1 - \theta - x_f - \frac{P_l}{P_h} + \frac{P_l}{P_h}\theta + \alpha^*\theta + \alpha^*\frac{P_l}{P_h} - \alpha^*\frac{P_l}{P_h}\theta + \alpha^* x_f \\
+    b_1 &= 1 - .529 - 0.5 - \frac{10}{40} + \frac{10}{40} \cdot 0.529 + 10 \cdot 0.529 + 10 \cdot \frac{10}{40} - 10 \cdot \frac{10}{40} \cdot 0.529 + 10 \cdot 0.5 \\
+    b_1 &= 11.3 \\
+    c_1 &= -\alpha^* x_f \\
+    c_1 &= -10 \cdot 0.5 = -5 \\
+    y_p &= \frac{-b_1 + \sqrt{b_1^2 - 4a_1c_1}}{2a_1} \\
+    y_p &= \frac{-11.3 + \sqrt{11.3^2 - 4\cdot-5.82\cdot-5}}{2\cdot-5.8} \\
+    \Aboxed{y_p &= 0.678} \\
+    x_0 &= \frac{0.5 - 0.529 \cdot 0.678}{1 - 0.529} \\
+    \Aboxed{x_0 &= 0.3} \\
+    A_m &= \frac{\theta L_f y_p}{\frac{P_A'}{t}\left(P_h x_0 - P_l y_h\right)} \\
+    A_m &= \frac{0.529 \cdot 2000 \cdot 0.678}{\frac{4 \cdot 10^{-9}}{0.0015}\left(40 \cdot 0.3 - 10 \cdot 0.678\right)} \\
+    \Aboxed{A_m &= 5.15 \cdot 10^7 \text{ cm$^3$}}
+\end{align*}
+
+(b)
+
+\begin{align*}
+    x_{0M} &= \frac{x_f \left[1 + \left(\alpha^*-1\right)\frac{P_l}{P_h}\left(1-x_f\right)\right]}{\alpha^*\left(1-x_f\right)+x_f} \\
+    x_{0M} &= \frac{0.5 \left[1 + \left(10-1\right)\frac{10}{40}\left(1-0.5\right)\right]}{10\left(1-0.5\right)+0.5} \\
+    \Aboxed{x_{0M} &= 0.193}
+\end{align*}
+
+(c)
+
+\begin{align*}
+    \intertext{Same as part b except that $x_f=0.6$}
+    x_{0M} &= \frac{0.6 \left[1 + \left(10-1\right)\frac{10}{40}\left(1-0.6\right)\right]}{10\left(1-0.6\right)+0.6} \\
+    \Aboxed{x_{0M} &= 0.2478}
+\end{align*}

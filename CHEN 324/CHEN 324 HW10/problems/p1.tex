@@ -1,0 +1,32 @@
+\item Problem 25.2-2
+
+\begin{align*}
+    & t = 0.002 \\
+    & P_A' = 4 \cdot 10^{-8} \\
+    & \alpha^* = 10 \\
+    & L_f = 0.002 \\
+    & x_f = 0.413 \\
+    & P_h = 80 \\
+    & P_l = 20 \\
+    & x_0 = 0.3 \\
+    \intertext{Finding $y_p$}
+    r &= \frac{P_l}{P_h} \\
+    r &= \frac{20}{80} = 0.25 \\
+    a &= 1 - \alpha^* \\
+    a &= 1 - 10 = -9 \\
+    b &= -1 + \alpha^* + \frac{1}{r} + \frac{x_0}{r} \left(\alpha^* - 1\right) \\
+    b &= -1 + 10 \frac{1}{0.25} + \frac{0.3}{0.25} \left(10 - 1\right) = 23.8 \\
+    c &= \frac{-\alpha^*x_0}{r} \\
+    c &= \frac{-10 \cdot 0.3}{0.25} = -12 \\
+    y_p &= \frac{-b + \sqrt{b^2 - 4ac}}{2a} \\
+    y_p &= \frac{-23.8 + \sqrt{23.8^2 - 4 \cdot -9 \cdot -12}}{2 \cdot -9} \\
+    \Aboxed{y_p &= 0.678} \\
+    \intertext{Finding fraction permeated}
+    x_0 &= \frac{x_f - \theta y_p}{1 - \theta} \\
+    0.3 &= \frac{0.413 - \theta \cdot 0.678}{1 - \theta} \\
+    \intertext{Solve for $\theta$}
+    \Aboxed{\theta &= 0.299} \\
+    A_m &= \frac{\theta L_f y_p}{\frac{P_A'}{t}\left(P_h x_0 - P_l y_h\right)} \\
+    A_m &= \frac{0.299 \cdot 0.002 \cdot 0.678}{\frac{4 \cdot 10^{-8}}{0.002}\left(80 \cdot 0.3 - 20 \cdot 0.678\right)} \\
+    \Aboxed{A_m &= 1.94 \text{ cm$^3$}}
+\end{align*}
