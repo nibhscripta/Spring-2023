@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{empheq}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{authblk}
+\usepackage{subcaption}
+\usepackage{svg}
+\usepackage{minted}
+\usepackage{multicol}
+
+\graphicspath{ {./assets/} }
+\geometry{margin=0.25in}
+
+\title{equation}
+
+\begin{document}
+
+\noindent
+
+\begin{multicols}{2}
+\textbf{Membranes}
+
+$\theta=\frac{V_p}{L_f}$
+
+$\alpha^*=\frac{P_A'}{P_B'}$ 
+
+$\frac{y_p}{1-y_p}=\frac{\alpha^*\left[x_0-\left(\frac{P_l}{P_h}\right)y_p\right]}{\left(1-x_0\right)-\left(\frac{P_l}{P_h}\right)\left(1-y_p\right)}$ 
+
+\textbf{Case 1:} 
+
+$r=\frac{P_l}{P_h}$ 
+
+$a=1-\alpha^*$ 
+
+$b=-1+\alpha^*+\frac{1}{r}+\frac{x_0}{r}\left(\alpha^*-1\right)$ 
+
+$c=\frac{-\alpha^*x_0}{r}$ 
+
+$y_p=\frac{-b+\sqrt{b^2-4ac}}{2a}$ 
+
+\textbf{Case 2:} 
+
+$y_p=\frac{-b_1+\sqrt{b_1^2-4a_1c_1}}{2a_1}$ 
+
+$a_1 = \theta + \frac{P_l}{P_h} - \frac{P_l}{P_h}\theta - \alpha^*\theta - \alpha^*\frac{P_l}{P_h} + \alpha^*\frac{P_l}{P_h}\theta$ 
+
+$b_1 = 1 - \theta - x_f - \frac{P_l}{P_h} + \frac{P_l}{P_h}\theta + \alpha^*\theta + \alpha^*\frac{P_l}{P_h} - \alpha^*\frac{P_l}{P_h}\theta + \alpha^* x_f$ 
+
+$c_1 = -\alpha^* x_f$ 
+
+$x_0=\frac{x_f-\theta y_p}{1-\theta}$ 
+
+$y_p=\frac{x_f-x_0\left(1-\theta\right)}{\theta}$ 
+
+$A_m = \frac{\theta L_f y_p}{\frac{P_A'}{t}\left(P_h x_0 - P_l y_h\right)}$ 
+
+$x_{0M} = \frac{x_f \left[1 + \left(\alpha^*-1\right)\frac{P_l}{P_h}\left(1-x_f\right)\right]}{\alpha^*\left(1-x_f\right)+x_f}$ 
+
+\textbf{Liquid-Liquid Extraction}
+
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{ll_diag.png}
+\end{center}
+
+\textbf{V}: organic layer; \textbf{L}: aqueous layer;
+
+\textbf{Stripping}: removing from aqueous layer
+
+$N=\frac{\ln\left[\frac{x_0-y_{N+1}/m}{x_N-y_{N+1}/m}\left(1-A\right)+A\right]}{\ln\left(1/A\right)}$
+
+\textbf{Absorption}: removing from organic layer
+
+$N=\frac{\ln\left[\frac{y_{N+1}-mx_0}{y_1-mx_0}\left(1-\frac{1}{A}\right)+\frac{1}{A}\right]}{\ln\left(A\right)}$
+
+$A=\frac{L}{mV}$
+
+$A=\sqrt{A_NA_1}$
+
+$\Delta x_\Delta=\frac{L_0x_0-V_1y_1}{L_0-V_1}=\frac{L_Nx_N-V_{N+1}y_{N+1}}{L_N-V_{N+1}}$
+
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{ll_stages.png}
+\end{center}
+
+\textbf{Adsorption}
+
+\textbf{Mass Balance:}  $q_0M+C_0S=q_fM+C_fS$
+
+\textbf{H from geometry:} $H_T=\frac{M}{\rho A_c \phi}$; \textbf{$\phi$:} void fraction
+
+$t_t=\int_0^\infty\left(1-\frac{c}{c_0}\right)dt$ 
+
+$t_u=\int_0^{t_b}\left(1-\frac{c}{c_0}\right)dt$ 
+
+$\eta=\frac{t_u}{t_t}$ 
+
+$H_B=\frac{t_u}{t_t}H_T$ 
+
+$H_{\text{UNB}}=\left(1-\frac{t_u}{t_b}\right)H_T$ 
+
+$\frac{Q_1}{D_1^2}=\frac{Q_2}{D_2^2}$ 
+
+$Q=v\frac{\pi}{4}D^2$
+
+\textbf{Leaching}
+
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{leach_diag.png}
+\end{center}
+
+\textbf{V}: overflow layer;
+\textbf{L}: liquid = A + C;
+\textbf{x}: overflow liquid;
+\textbf{y}: liquid in slurry;
+
+$N=\frac{B}{L}$
+
+$x_\Delta=\frac{L_0y_0-V_1x_1}{L_0-V_1}=\frac{L_Ny_N-V_{N+1}x_{N+1}}{L_N-V_{N+1}}$
+
+$N_\Delta=\frac{B}{L_0-V_1}=\frac{N_0L_0}{L_0-V_1}$
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{leach_stages.png}
+\end{center}
+
+\end{multicols}
+
+
+
+\end{document}
